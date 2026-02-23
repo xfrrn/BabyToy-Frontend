@@ -38,7 +38,7 @@ export default function MegaMenu({ item }: { item: MarketingNavItem }) {
                         <li key={link.label}>
                           <Link
                             href={link.href}
-                            className="text-sm text-black/70 transition hover:text-black focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#1f5eff]"
+                            className="text-sm text-black/70 transition duration-200 ease-out hover:text-black ui-focus"
                           >
                             {link.label}
                           </Link>

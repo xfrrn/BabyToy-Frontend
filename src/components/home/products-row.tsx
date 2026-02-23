@@ -50,19 +50,13 @@ export default async function ProductsRow({
 
   return (
     <section className="bg-white">
-      <div className="content-container py-16">
+      <div className="content-container ui-section">
         <div className="mb-8 flex flex-wrap items-end justify-between gap-4">
           <div>
-            <p className="text-xs uppercase tracking-[0.3em] text-black/40">
-              {title}
-            </p>
-            <h2 className="mt-2 text-3xl font-semibold text-black">
-              {subtitle}
-            </h2>
+            <p className="ui-eyebrow">{title}</p>
+            <h2 className="ui-title">{subtitle}</h2>
             {description ? (
-              <p className="mt-3 max-w-2xl text-sm text-black/60">
-                {description}
-              </p>
+              <p className="ui-subtitle">{description}</p>
             ) : null}
           </div>
         </div>
@@ -77,11 +71,11 @@ export default async function ProductsRow({
             return (
               <li key={product.id} className="relative">
                 {ageRange ? (
-                  <span className="absolute left-3 top-3 z-10 rounded-full border border-black/10 bg-white/90 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.2em] text-black/60">
+                  <span className="absolute left-3 top-3 z-10 rounded-full border border-black/10 bg-white/90 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.2em] text-black/60 shadow-[0_8px_18px_-12px_rgba(0,0,0,0.35)]">
                     Ages {ageRange}
                   </span>
                 ) : null}
-                <div className="rounded-3xl border border-black/5 bg-[#f9f7f2] p-4 shadow-[0_18px_40px_-30px_rgba(0,0,0,0.3)]">
+                <div className="ui-card ui-card-hover bg-[#f9f7f2] p-4">
                   <ProductPreview
                     product={product as HttpTypes.StoreProduct}
                     region={region}

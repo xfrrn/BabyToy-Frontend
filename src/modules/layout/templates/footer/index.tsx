@@ -19,7 +19,7 @@ export default async function Footer() {
           <div>
             <LocalizedClientLink
               href="/"
-              className="txt-compact-xlarge-plus text-ui-fg-subtle hover:text-ui-fg-base uppercase"
+              className="txt-compact-xlarge-plus text-ui-fg-subtle hover:text-ui-fg-base uppercase ui-link"
             >
               Medusa Store
             </LocalizedClientLink>
@@ -35,7 +35,7 @@ export default async function Footer() {
                 {FOOTER_LINKS.quickLinks.map((link) => (
                   <li key={link.label}>
                     <LocalizedClientLink
-                      className="hover:text-ui-fg-base"
+                      className="hover:text-ui-fg-base ui-link"
                       href={link.href}
                     >
                       {link.label}
@@ -51,7 +51,7 @@ export default async function Footer() {
                 {FOOTER_LINKS.about.map((link) => (
                   <li key={link.label}>
                     <LocalizedClientLink
-                      className="hover:text-ui-fg-base"
+                      className="hover:text-ui-fg-base ui-link"
                       href={link.href}
                     >
                       {link.label}
@@ -74,7 +74,7 @@ export default async function Footer() {
                 {FOOTER_LINKS.shipping.map((link) => (
                   <li key={link.label}>
                     <LocalizedClientLink
-                      className="hover:text-ui-fg-base"
+                      className="hover:text-ui-fg-base ui-link"
                       href={link.href}
                     >
                       {link.label}
@@ -102,7 +102,7 @@ export default async function Footer() {
                     return (
                       <li key={c.id}>
                         <LocalizedClientLink
-                          className="hover:text-ui-fg-base"
+                          className="hover:text-ui-fg-base ui-link"
                           href={`/categories/${c.handle}`}
                           data-testid="category-link"
                         >
@@ -122,7 +122,7 @@ export default async function Footer() {
                   {collections?.slice(0, 6).map((c) => (
                     <li key={c.id}>
                       <LocalizedClientLink
-                        className="hover:text-ui-fg-base"
+                        className="hover:text-ui-fg-base ui-link"
                         href={`/collections/${c.handle}`}
                       >
                         {c.title}
@@ -145,12 +145,9 @@ export default async function Footer() {
               <input
                 type="email"
                 placeholder="Enter your email"
-                className="rounded-full border border-black/10 bg-white px-4 py-2 text-sm focus:outline-none"
+                className="ui-input"
               />
-              <button
-                type="button"
-                className="rounded-full bg-black px-6 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-white"
-              >
+              <button type="button" className="ui-button ui-button-primary">
                 Subscribe
               </button>
             </div>
@@ -189,7 +186,7 @@ export default async function Footer() {
 
         <div className="mb-16 flex w-full items-center justify-between text-ui-fg-muted">
           <Text className="txt-compact-small">
-            漏 {new Date().getFullYear()} Medusa Store. All rights reserved.
+            (c) {new Date().getFullYear()} Medusa Store. All rights reserved.
           </Text>
           <MedusaCTA />
         </div>

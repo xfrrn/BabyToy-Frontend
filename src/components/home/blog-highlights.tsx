@@ -6,7 +6,7 @@ import SectionHeader from "./section-header"
 export default function BlogHighlights() {
   return (
     <section className="bg-white">
-      <div className="content-container py-16">
+      <div className="content-container ui-section">
         <SectionHeader
           eyebrow={BLOG_HIGHLIGHTS.eyebrow}
           title={BLOG_HIGHLIGHTS.title}
@@ -17,7 +17,7 @@ export default function BlogHighlights() {
           {BLOG_HIGHLIGHTS.posts.map((post) => (
             <article
               key={post.title}
-              className="flex h-full flex-col rounded-3xl border border-black/5 bg-[#f7f8fb] p-6 shadow-[0_16px_36px_-28px_rgba(0,0,0,0.18)]"
+              className="flex h-full flex-col ui-card ui-card-hover bg-[#f7f8fb] p-6"
             >
               <p className="text-[10px] uppercase tracking-[0.25em] text-black/40">
                 {post.date}
@@ -28,10 +28,10 @@ export default function BlogHighlights() {
               <p className="mt-2 text-sm text-black/60">{post.excerpt}</p>
               <Link
                 href={post.href}
-                className="mt-auto inline-flex items-center gap-2 pt-6 text-xs font-semibold uppercase tracking-[0.2em] text-black/60"
+                className="mt-auto inline-flex items-center gap-2 pt-6 text-xs font-semibold uppercase tracking-[0.2em] text-black/60 ui-link"
               >
                 Read article
-                <span aria-hidden>→</span>
+                <span aria-hidden>-></span>
               </Link>
             </article>
           ))}

@@ -54,6 +54,72 @@
     @apply max-w-[1440px] w-full mx-auto px-6;
   }
 
+  .ui-section {
+    @apply py-16;
+  }
+
+  .ui-section-tight {
+    @apply py-12;
+  }
+
+  .ui-eyebrow {
+    @apply text-xs uppercase tracking-[0.3em] text-black/40;
+  }
+
+  .ui-title {
+    @apply mt-2 text-3xl font-semibold text-black;
+  }
+
+  .ui-subtitle {
+    @apply mt-3 max-w-2xl text-sm text-black/60;
+  }
+
+  .ui-card {
+    @apply rounded-3xl border border-black/5 bg-white/95 shadow-[0_18px_40px_-30px_rgba(0,0,0,0.22)];
+  }
+
+  .ui-card-hover {
+    @apply transition duration-200 ease-out hover:-translate-y-0.5 hover:shadow-[0_24px_55px_-32px_rgba(0,0,0,0.3)];
+  }
+
+  .ui-link {
+    @apply transition-colors duration-200 ease-out hover:text-black;
+  }
+
+  .ui-button {
+    @apply inline-flex items-center gap-2 rounded-full border border-black/10 bg-white px-4 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-black/70 transition duration-200 ease-out hover:-translate-y-0.5 hover:border-black/20 hover:text-black;
+  }
+
+  .ui-button-primary {
+    @apply bg-black text-white border-black hover:bg-black/90 hover:text-white;
+  }
+
+  .ui-input {
+    @apply rounded-full border border-black/10 bg-white px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-black/10;
+  }
+
+  .ui-focus {
+    @apply focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#1f5eff];
+  }
+
+  .ui-fade-in {
+    @apply transition duration-200 ease-out;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .ui-card-hover,
+    .ui-button,
+    .ui-link,
+    .ui-fade-in {
+      transition: none !important;
+    }
+
+    .ui-card-hover:hover,
+    .ui-button:hover {
+      transform: none !important;
+    }
+  }
+
   .contrast-btn {
     @apply px-4 py-2 border border-black rounded-full hover:bg-black hover:text-white transition-colors duration-200 ease-in;
   }

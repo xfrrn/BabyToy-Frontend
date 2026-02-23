@@ -88,7 +88,7 @@ export default function PrimaryNav() {
                       ? `mega-menu-${item.label.toLowerCase().replace(/\s+/g, "-")}`
                       : undefined
                   }
-                  className={`flex items-center gap-2 border-b-2 px-1 pb-1 transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#1f5eff] ${
+                  className={`flex items-center gap-2 border-b-2 px-1 pb-1 transition duration-200 ease-out ui-focus ${
                     isActive
                       ? "border-[#1f5eff] text-black"
                       : openItem === item.label
@@ -143,7 +143,7 @@ export default function PrimaryNav() {
                               <Link
                                 key={link.label}
                                 href={link.href}
-                                className="rounded-xl bg-black/5 px-3 py-2"
+                                className="rounded-xl bg-black/5 px-3 py-2 transition duration-200 ease-out hover:bg-black/10"
                               >
                                 {link.label}
                               </Link>
@@ -153,7 +153,7 @@ export default function PrimaryNav() {
                       ))}
                     </div>
                   ) : (
-                    <Link href={href} className="mt-2 inline-flex text-xs text-black/60">
+                    <Link href={href} className="mt-2 inline-flex text-xs text-black/60 ui-link">
                       Go to {item.label}
                     </Link>
                   )}

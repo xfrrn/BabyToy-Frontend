@@ -5,7 +5,7 @@ import { LEARNING_TOOLS_SPOTLIGHT } from "@lib/data/homepage"
 export default function LearningToolsSpotlight() {
   return (
     <section className="bg-white">
-      <div className="content-container py-16">
+      <div className="content-container ui-section">
         <h2 className="text-2xl font-semibold text-black">
           {LEARNING_TOOLS_SPOTLIGHT.title}
         </h2>
@@ -13,7 +13,7 @@ export default function LearningToolsSpotlight() {
           {LEARNING_TOOLS_SPOTLIGHT.items.map((item) => (
             <div
               key={item.title}
-              className="rounded-3xl border border-black/5 bg-[#f9f7f2] p-6 shadow-[0_16px_36px_-28px_rgba(0,0,0,0.22)]"
+              className="ui-card ui-card-hover bg-[#f9f7f2] p-6"
             >
               <p className="text-xs uppercase tracking-[0.25em] text-black/40">
                 {item.tag}
@@ -22,12 +22,9 @@ export default function LearningToolsSpotlight() {
                 {item.title}
               </h3>
               <p className="mt-2 text-sm text-black/60">{item.description}</p>
-              <Link
-                href={item.href}
-                className="mt-6 inline-flex items-center gap-2 rounded-full border border-black/10 bg-white px-4 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-black/70"
-              >
+              <Link href={item.href} className="mt-6 ui-button">
                 Learn more
-                <span aria-hidden>→</span>
+                <span aria-hidden>-></span>
               </Link>
             </div>
           ))}

@@ -27,7 +27,7 @@ export default function ProductCard({
   return (
     <Link
       href={`/${countryCode}/products/${product.handle}`}
-      className="group flex h-full flex-col overflow-hidden rounded-3xl border border-black/5 bg-white/95 shadow-[0_18px_40px_-30px_rgba(0,0,0,0.35)] transition hover:-translate-y-1 hover:shadow-[0_30px_60px_-35px_rgba(0,0,0,0.4)]"
+      className="group ui-card ui-card-hover flex h-full flex-col overflow-hidden focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#1f5eff]"
     >
       <div className="relative aspect-[4/3] w-full overflow-hidden bg-black/5">
         {product.thumbnail ? (
@@ -36,7 +36,7 @@ export default function ProductCard({
             alt={product.title}
             fill
             sizes="(min-width: 768px) 50vw, 100vw"
-            className="object-cover transition duration-500 group-hover:scale-105"
+            className="object-cover transition duration-300 ease-out group-hover:scale-[1.03]"
           />
         ) : (
           <div className="flex h-full items-center justify-center text-xs uppercase tracking-[0.2em] text-black/40">

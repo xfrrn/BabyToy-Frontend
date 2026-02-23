@@ -10,7 +10,7 @@ export default function AnnouncementBar() {
         <Link
           href={ANNOUNCEMENT.href}
           aria-label={ANNOUNCEMENT.ctaLabel}
-          className="rounded-full border border-white/50 px-3 py-1 text-[10px] tracking-[0.22em] transition hover:border-white hover:bg-white/10"
+          className="rounded-full border border-white/60 px-3 py-1 text-[10px] tracking-[0.22em] transition duration-200 ease-out hover:border-white hover:bg-white/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white/80"
         >
           {ANNOUNCEMENT.ctaLabel}
         </Link>

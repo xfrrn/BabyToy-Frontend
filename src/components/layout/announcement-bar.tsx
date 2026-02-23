@@ -1,10 +1,6 @@
-﻿import Link from "next/link"
+import Link from "next/link"
 
-const ANNOUNCEMENT = {
-  text: "FREE SHIPPING ON ANY ORDER OF $99+!",
-  ctaLabel: "SEE DETAILS",
-  href: "/shop/scenario/shipping",
-}
+import { ANNOUNCEMENT } from "@lib/data/homepage"
 
 export default function AnnouncementBar() {
   return (
@@ -13,7 +9,7 @@ export default function AnnouncementBar() {
         <span>{ANNOUNCEMENT.text}</span>
         <Link
           href={ANNOUNCEMENT.href}
-          aria-label="See shipping details"
+          aria-label={ANNOUNCEMENT.ctaLabel}
           className="rounded-full border border-white/50 px-3 py-1 text-[10px] tracking-[0.22em] transition hover:border-white hover:bg-white/10"
         >
           {ANNOUNCEMENT.ctaLabel}

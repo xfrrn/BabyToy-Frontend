@@ -9,11 +9,13 @@ export default async function ProductsRow({
   countryCode,
   title,
   subtitle,
+  description,
   strategy = "default",
 }: {
   countryCode: string
   title: string
   subtitle: string
+  description?: string
   strategy?: QueryStrategy
 }) {
   const region = await getRegion(countryCode)
@@ -57,6 +59,11 @@ export default async function ProductsRow({
             <h2 className="mt-2 text-3xl font-semibold text-black">
               {subtitle}
             </h2>
+            {description ? (
+              <p className="mt-3 max-w-2xl text-sm text-black/60">
+                {description}
+              </p>
+            ) : null}
           </div>
         </div>
 

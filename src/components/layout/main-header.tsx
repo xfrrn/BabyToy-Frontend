@@ -1,15 +1,11 @@
-﻿"use client"
+"use client"
 
 import { FormEvent, useState } from "react"
+import Link from "next/link"
 import { usePathname, useRouter } from "next/navigation"
-import HomeLink from "./home-link"
 
-const TOOL_LINKS = [
-  { label: "Call", detail: "1-800-555-0199" },
-  { label: "Help", detail: "Support" },
-  { label: "Sign In", detail: "Account" },
-  { label: "Wishlist", detail: "Favorites" },
-]
+import { HEADER_LINKS } from "@lib/data/homepage"
+import HomeLink from "./home-link"
 
 function getCountryCode(pathname: string) {
   const parts = pathname.split("/").filter(Boolean)
@@ -72,36 +68,46 @@ export default function MainHeader() {
             type="search"
             value={query}
             onChange={(event) => setQuery(event.target.value)}
-            placeholder="Search Here for Fun"
+            placeholder="Search by age, grade, or category"
           />
         </form>
 
         <div className="hidden items-center justify-end gap-6 text-xs text-black/60 md:flex">
-          {TOOL_LINKS.map((item) => (
-            <div key={item.label} className="flex flex-col items-end">
+          {HEADER_LINKS.map((item) => (
+            <Link
+              key={item.label}
+              href={item.href}
+              className="flex flex-col items-end transition hover:text-black"
+            >
               <span className="uppercase tracking-[0.2em] text-[10px]">
                 {item.label}
               </span>
               <span className="text-sm text-black/80">{item.detail}</span>
-            </div>
+            </Link>
           ))}
-          <div className="relative">
-            <span className="text-sm text-black/80">Cart</span>
-            <span className="absolute -right-4 -top-2 flex h-5 w-5 items-center justify-center rounded-full bg-[#ff5b5b] text-[10px] font-semibold text-white">
-              0
-            </span>
+          <div className="flex items-center gap-4 text-sm text-black/80">
+            <Link href="/account" className="uppercase tracking-[0.2em] text-xs">
+              Account
+            </Link>
+            <Link href="/cart" className="relative">
+              Cart
+              <span className="absolute -right-4 -top-2 flex h-5 w-5 items-center justify-center rounded-full bg-[#ff5b5b] text-[10px] font-semibold text-white">
+                0
+              </span>
+            </Link>
           </div>
         </div>
 
         <div className="flex items-center justify-between gap-4 text-xs text-black/60 md:hidden">
-          <span>Help</span>
-          <span>Sign In</span>
-          <div className="relative">
-            <span className="text-sm text-black/80">Cart</span>
+          <Link href="/account" className="text-sm text-black/80">
+            Account
+          </Link>
+          <Link href="/cart" className="relative text-sm text-black/80">
+            Cart
             <span className="absolute -right-3 -top-2 flex h-5 w-5 items-center justify-center rounded-full bg-[#ff5b5b] text-[10px] font-semibold text-white">
               0
             </span>
-          </div>
+          </Link>
         </div>
       </div>
     </div>

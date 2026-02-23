@@ -1,17 +1,10 @@
-﻿import AnnouncementBar from "../../../components/layout/announcement-bar"
+import AnnouncementBar from "../../../components/layout/announcement-bar"
 import MainHeader from "../../../components/layout/main-header"
 import PrimaryNav from "../../../components/layout/primary-nav"
-import AgeShopGrid from "../../../components/home/age-shop-grid"
-import BestSellersRow from "../../../components/home/best-sellers-row"
-import BrandIntro from "../../../components/home/brand-intro"
-import CategoryHighlights from "../../../components/home/category-highlights"
-import FeaturedCollection from "../../../components/home/featured-collection"
-import FaqMini from "../../../components/home/faq-mini"
-import NewsletterStrip from "../../../components/home/newsletter-strip"
-import NewArrivalsRow from "../../../components/home/new-arrivals-row"
-import ScenarioPicks from "../../../components/home/scenario-picks"
-import TrustStrip from "../../../components/home/trust-strip"
-import VideoHero from "../../../components/home/video-hero"
+import BlogHighlights from "../../../components/home/blog-highlights"
+import FeaturedProductsSection from "../../../components/home/featured-products-section"
+import HeroIntro from "../../../components/home/hero-intro"
+import LearningToolsSpotlight from "../../../components/home/learning-tools-spotlight"
 
 export default async function Home(props: {
   params: Promise<{ countryCode: string }>
@@ -26,17 +19,12 @@ export default async function Home(props: {
         <PrimaryNav />
       </div>
 
-      <VideoHero />
-      <NewsletterStrip />
-      <AgeShopGrid />
-      <BestSellersRow countryCode={params.countryCode} />
-      <BrandIntro />
-      <CategoryHighlights />
-      <FeaturedCollection countryCode={params.countryCode} />
-      <NewArrivalsRow countryCode={params.countryCode} />
-      <TrustStrip />
-      <ScenarioPicks />
-      <FaqMini />
+      <main>
+        <HeroIntro />
+        <FeaturedProductsSection countryCode={params.countryCode} />
+        <LearningToolsSpotlight />
+        <BlogHighlights />
+      </main>
     </div>
   )
 }

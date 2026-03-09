@@ -24,7 +24,7 @@ export default function LearningToolsSpotlight() {
               <p className="mt-2 text-sm text-black/60">{item.description}</p>
               <Link href={item.href} className="mt-6 ui-button">
                 Learn more
-                <span aria-hidden>-></span>
+                <span aria-hidden>{'->'}</span>
               </Link>
             </div>
           ))}

@@ -31,7 +31,7 @@ export default function BlogHighlights() {
                 className="mt-auto inline-flex items-center gap-2 pt-6 text-xs font-semibold uppercase tracking-[0.2em] text-black/60 ui-link"
               >
                 Read article
-                <span aria-hidden>-></span>
+                <span aria-hidden>{'->'}</span>
               </Link>
             </article>
           ))}

@@ -10,25 +10,29 @@ import { sortProducts } from "@lib/util/shop-sort"
 import ShopSortBar from "@components/shop/shop-sort-bar"
 
 const AGE_PAGES: Record<string, { title: string; description: string }> = {
-  "0-12m": {
-    title: "0–12 Months",
-    description: "Tactile discovery, calm sensory play, and gentle movement.",
+  "0-24-months": {
+    title: "0-24 Months",
+    description: "Gentle sensory discovery and early developmental play.",
   },
-  "1-2": {
-    title: "1–2 Years",
-    description: "Early motor skills and simple cause-and-effect play.",
+  "2-4-years": {
+    title: "2-4 Years",
+    description: "Early imagination, movement, and hands-on exploration.",
   },
-  "3-4": {
-    title: "3–4 Years",
-    description: "Imaginative play and hands-on learning.",
+  "5-7-years": {
+    title: "5-7 Years",
+    description: "Building focus, confidence, and creative problem solving.",
   },
-  "5-7": {
-    title: "5–7 Years",
-    description: "Building focus, logic, and creativity.",
+  "8-10-years": {
+    title: "8-10 Years",
+    description: "Independent learning tools for growing curious minds.",
   },
-  "8-plus": {
-    title: "8+ Years",
-    description: "Deeper challenges for curious minds.",
+  "11-13-years": {
+    title: "11-13 Years",
+    description: "More advanced challenges for deeper thinking and practice.",
+  },
+  "14-plus-years": {
+    title: "14+ Years",
+    description: "Advanced picks for teens and older learners.",
   },
 }
 

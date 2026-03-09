@@ -1,41 +1,41 @@
-﻿import Link from "next/link"
+import Link from "next/link"
 
 const AGE_CARDS = [
   {
-    title: "0-12 Months",
-    description: "Tactile discovery and gentle sensory play",
-    ctaLabel: "Shop 0-12M",
-    href: "/shop/age/0-12m",
+    value: "0-24",
+    unit: "Months",
+    title: "0-24 Months",
+    href: "/shop/age/0-24-months",
   },
   {
-    title: "1-2 Years",
-    description: "Fine motor basics and early cause & effect",
-    ctaLabel: "Shop 1-2",
-    href: "/shop/age/1-2",
+    value: "2-4",
+    unit: "Years",
+    title: "2-4 Years",
+    href: "/shop/age/2-4-years",
   },
   {
-    title: "3-4 Years",
-    description: "Imaginative play and hands-on learning",
-    ctaLabel: "Shop 3-4",
-    href: "/shop/age/3-4",
-  },
-  {
+    value: "5-7",
+    unit: "Years",
     title: "5-7 Years",
-    description: "Building focus, logic, and creative confidence",
-    ctaLabel: "Shop 5-7",
-    href: "/shop/age/5-7",
+    href: "/shop/age/5-7-years",
   },
   {
-    title: "8+ Years",
-    description: "STEM exploration and deeper challenges",
-    ctaLabel: "Shop 8-plus",
-    href: "/shop/age/8-plus",
+    value: "8-10",
+    unit: "Years",
+    title: "8-10 Years",
+    href: "/shop/age/8-10-years",
   },
   {
-    title: "Family Favorites",
-    description: "Parent-loved picks for shared playtime",
-    ctaLabel: "Shop Favorites",
-    href: "/shop/scenario/favorites",
+    value: "11-13",
+    unit: "Years",
+    title: "11-13 Years",
+    href: "/shop/age/11-13-years",
+  },
+  {
+    value: "14+",
+    unit: "Years",
+    title: "14+ Years",
+    href: "/shop/age/14-plus-years",
   },
 ]
 
@@ -43,41 +43,41 @@ export default function AgeShopGrid() {
   return (
     <section className="bg-white">
       <div className="content-container py-16">
-        <div className="mb-8 flex flex-wrap items-end justify-between gap-4">
+        <div className="mb-10 flex flex-wrap items-end justify-between gap-4">
           <div>
             <p className="text-xs uppercase tracking-[0.3em] text-black/40">
-              Shop by age
+              Age
             </p>
             <h2 className="mt-2 text-3xl font-semibold text-black">
-              Start with the right stage
+              Shop by age
             </h2>
             <p className="mt-3 max-w-2xl text-sm text-black/60">
-              Clear age guidance helps parents find the right fit fast.
+              Pick the right age range and jump straight into the matching products.
             </p>
           </div>
         </div>
 
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid grid-cols-2 gap-x-6 gap-y-10 md:grid-cols-3 xl:grid-cols-6">
           {AGE_CARDS.map((card) => (
-            <div
+            <Link
               key={card.title}
-              className="rounded-3xl border border-black/5 bg-[#f9f7f2] p-6 shadow-[0_18px_40px_-32px_rgba(0,0,0,0.25)]"
+              href={card.href}
+              className="group flex flex-col items-center text-center"
             >
-              <p className="text-xs uppercase tracking-[0.25em] text-black/40">
+              <div className="flex aspect-square w-full max-w-[260px] items-center justify-center rounded-full bg-[#f1f1f1] transition duration-200 ease-out group-hover:bg-[#e8e8e8]">
+                <div className="flex flex-col items-center leading-none text-black">
+                  <span className="text-4xl font-semibold tracking-[-0.04em] md:text-5xl">
+                    {card.value}
+                  </span>
+                  <span className="mt-3 text-2xl font-semibold md:text-3xl">
+                    {card.unit}
+                  </span>
+                </div>
+              </div>
+              <p className="mt-5 text-lg font-medium text-black underline-offset-4 transition duration-200 ease-out group-hover:underline">
                 {card.title}
               </p>
-              <p className="mt-3 text-lg font-semibold text-black">
-                {card.description}
-              </p>
-              <Link
-                href={card.href}
-                aria-label={card.ctaLabel}
-                className="mt-6 inline-flex items-center gap-2 rounded-full border border-black/10 bg-white px-4 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-black/70"
-              >
-                {card.ctaLabel}
-                <span aria-hidden>→</span>
-              </Link>
-            </div>
+            </Link>
           ))}
         </div>
       </div>

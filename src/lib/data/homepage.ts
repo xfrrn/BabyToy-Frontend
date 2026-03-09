@@ -68,11 +68,12 @@ export const MARKETING_NAV: MarketingNavItem[] = [
       {
         title: "Age",
         links: [
-          { label: "0-12 Months", href: "/shop/age/0-12m" },
-          { label: "1-2 Years", href: "/shop/age/1-2" },
-          { label: "3-4 Years", href: "/shop/age/3-4" },
-          { label: "5-7 Years", href: "/shop/age/5-7" },
-          { label: "8+ Years", href: "/shop/age/8-plus" },
+          { label: "0-24 Months", href: "/shop/age/0-24-months" },
+          { label: "2-4 Years", href: "/shop/age/2-4-years" },
+          { label: "5-7 Years", href: "/shop/age/5-7-years" },
+          { label: "8-10 Years", href: "/shop/age/8-10-years" },
+          { label: "11-13 Years", href: "/shop/age/11-13-years" },
+          { label: "14+ Years", href: "/shop/age/14-plus-years" },
         ],
       },
     ],

@@ -1,6 +1,6 @@
 import MainHeader from "../../../components/layout/main-header"
 import PrimaryNav from "../../../components/layout/primary-nav"
-import BlogHighlights from "../../../components/home/blog-highlights"
+import AgeShopGrid from "../../../components/home/age-shop-grid"
 import FeaturedProductsSection from "../../../components/home/featured-products-section"
 import HeroIntro from "../../../components/home/hero-intro"
 import LearningToolsSpotlight from "../../../components/home/learning-tools-spotlight"
@@ -21,7 +21,7 @@ export default async function Home(props: {
         <HeroIntro />
         <FeaturedProductsSection countryCode={params.countryCode} />
         <LearningToolsSpotlight />
-        <BlogHighlights />
+        <AgeShopGrid />
       </main>
     </div>
   )

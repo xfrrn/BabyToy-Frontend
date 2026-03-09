@@ -1,5 +1,7 @@
 import React, { Suspense } from "react"
 
+import { PRODUCT_UI_CONTENT } from "@lib/data/homepage"
+import { getSiteContentSection } from "@lib/data/site-content"
 import ImageGallery from "@modules/products/components/image-gallery"
 import ProductActions from "@modules/products/components/product-actions"
 import ProductOnboardingCta from "@modules/products/components/product-onboarding-cta"
@@ -19,7 +21,7 @@ type ProductTemplateProps = {
   images: HttpTypes.StoreProductImage[]
 }
 
-const ProductTemplate: React.FC<ProductTemplateProps> = ({
+const ProductTemplate: React.FC<ProductTemplateProps> = async ({
   product,
   region,
   countryCode,
@@ -29,6 +31,11 @@ const ProductTemplate: React.FC<ProductTemplateProps> = ({
     return notFound()
   }
 
+  const productUiContent = await getSiteContentSection(
+    "product_ui_content",
+    PRODUCT_UI_CONTENT
+  )
+
   return (
     <>
       <div
@@ -37,7 +44,7 @@ const ProductTemplate: React.FC<ProductTemplateProps> = ({
       >
         <div className="flex w-full flex-col gap-y-6 py-8 small:sticky small:top-48 small:max-w-[300px] small:py-0">
           <ProductInfo product={product} />
-          <ProductTabs product={product} />
+          <ProductTabs product={product} content={productUiContent} />
         </div>
         <div className="block w-full relative">
           <ImageGallery images={images} />
@@ -50,6 +57,7 @@ const ProductTemplate: React.FC<ProductTemplateProps> = ({
                 disabled={true}
                 product={product}
                 region={region}
+                content={productUiContent}
               />
             }
           >

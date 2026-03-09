@@ -4,7 +4,18 @@ import Link from "next/link"
 
 import type { MarketingNavItem } from "@lib/data/homepage"
 
-export default function MegaMenu({ item }: { item: MarketingNavItem }) {
+type MegaMenuContent = {
+  megaMenuIntroLabelPrefix: string
+  megaMenuIntroDescription: string
+}
+
+export default function MegaMenu({
+  item,
+  content,
+}: {
+  item: MarketingNavItem
+  content: MegaMenuContent
+}) {
   if (!item.groups || item.groups.length === 0) {
     return null
   }
@@ -19,10 +30,10 @@ export default function MegaMenu({ item }: { item: MarketingNavItem }) {
           <div className="grid gap-8 lg:grid-cols-[220px_1fr]">
             <div className="rounded-[1.5rem] border border-[color:var(--border-soft)] bg-[rgba(255,250,242,0.88)] p-5">
               <p className="text-xs uppercase tracking-[0.22em] text-[color:var(--text-muted)]">
-                Browse {item.label}
+                {content.megaMenuIntroLabelPrefix} {item.label}
               </p>
               <p className="mt-4 text-sm text-[color:var(--text-body)]">
-                Curated shortcuts to help families shop faster.
+                {content.megaMenuIntroDescription}
               </p>
             </div>
 

@@ -1,64 +1,30 @@
 import Link from "next/link"
 
-const AGE_CARDS = [
-  {
-    value: "0-24",
-    unit: "Months",
-    title: "0-24 Months",
-    href: "/shop/age/0-24-months",
-  },
-  {
-    value: "2-4",
-    unit: "Years",
-    title: "2-4 Years",
-    href: "/shop/age/2-4-years",
-  },
-  {
-    value: "5-7",
-    unit: "Years",
-    title: "5-7 Years",
-    href: "/shop/age/5-7-years",
-  },
-  {
-    value: "8-10",
-    unit: "Years",
-    title: "8-10 Years",
-    href: "/shop/age/8-10-years",
-  },
-  {
-    value: "11-13",
-    unit: "Years",
-    title: "11-13 Years",
-    href: "/shop/age/11-13-years",
-  },
-  {
-    value: "14+",
-    unit: "Years",
-    title: "14+ Years",
-    href: "/shop/age/14-plus-years",
-  },
-]
+import { AGE_HIGHLIGHTS } from "@lib/data/homepage"
+import { getSiteContentSection } from "@lib/data/site-content"
 
-export default function AgeShopGrid() {
+export default async function AgeShopGrid() {
+  const content = await getSiteContentSection("age_highlights", AGE_HIGHLIGHTS)
+
   return (
     <section className="bg-[var(--bg-canvas)]">
       <div className="content-container py-16">
         <div className="mb-10 flex flex-wrap items-end justify-between gap-4">
           <div>
             <p className="text-xs uppercase tracking-[0.3em] text-black/40">
-              Age
+              {content.eyebrow}
             </p>
             <h2 className="mt-2 text-3xl font-semibold text-black">
-              Shop by age
+              {content.title}
             </h2>
             <p className="mt-3 max-w-2xl text-sm text-black/60">
-              Pick the right age range and jump straight into the matching products.
+              {content.subtitle}
             </p>
           </div>
         </div>
 
         <div className="grid grid-cols-2 gap-x-6 gap-y-10 md:grid-cols-3 xl:grid-cols-6">
-          {AGE_CARDS.map((card) => (
+          {content.items.map((card) => (
             <Link
               key={card.title}
               href={card.href}

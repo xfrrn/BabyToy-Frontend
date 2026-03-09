@@ -4,8 +4,18 @@ import { useEffect, useRef, useState } from "react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 
-import { MARKETING_NAV } from "@lib/data/homepage"
+import type { MarketingNavItem } from "@lib/data/homepage"
 import MegaMenu from "./mega-menu"
+
+type NavContent = {
+  mobileBrowseLabel: string
+  mobileCloseLabel: string
+  exploreLabel: string
+  megaMenuIntroLabelPrefix: string
+  megaMenuIntroDescription: string
+  mobileGoToPrefix: string
+  items: MarketingNavItem[]
+}
 
 const CLOSE_DELAY_MS = 120
 
@@ -15,7 +25,7 @@ function stripCountry(pathname: string) {
   return `/${parts.slice(1).join("/")}`
 }
 
-export default function PrimaryNav() {
+export default function PrimaryNav({ content }: { content: NavContent }) {
   const [openItem, setOpenItem] = useState<string | null>(null)
   const [mobileOpen, setMobileOpen] = useState(false)
   const closeTimer = useRef<number | null>(null)
@@ -61,11 +71,11 @@ export default function PrimaryNav() {
           aria-expanded={mobileOpen}
           aria-controls="primary-nav-mobile"
         >
-          {mobileOpen ? "Close" : "Browse"}
+          {mobileOpen ? content.mobileCloseLabel : content.mobileBrowseLabel}
         </button>
 
         <ul className="hidden items-center gap-8 text-sm text-black/70 md:flex">
-          {MARKETING_NAV.map((item) => {
+          {content.items.map((item) => {
             const href = item.href ?? item.groups?.[0]?.links[0]?.href ?? "#"
             const isActive =
               item.href && normalizedPath.startsWith(item.href)
@@ -104,18 +114,18 @@ export default function PrimaryNav() {
         </ul>
 
         <div className="hidden text-xs uppercase tracking-[0.3em] text-[color:var(--text-muted)] md:block">
-          Explore
+          {content.exploreLabel}
         </div>
       </div>
 
-      {MARKETING_NAV.map((item) =>
+      {content.items.map((item) =>
         item.groups && openItem === item.label ? (
           <div
             key={item.label}
             onMouseEnter={clearCloseTimer}
             onMouseLeave={scheduleClose}
           >
-            <MegaMenu item={item} />
+            <MegaMenu item={item} content={content} />
           </div>
         ) : null
       )}
@@ -123,7 +133,7 @@ export default function PrimaryNav() {
       {mobileOpen ? (
         <div id="primary-nav-mobile" className="border-t border-[color:var(--border-soft)] bg-[var(--bg-surface)] md:hidden">
           <div className="content-container flex flex-col gap-3 py-4 text-sm text-black/70">
-            {MARKETING_NAV.map((item) => {
+            {content.items.map((item) => {
               const href = item.href ?? item.groups?.[0]?.links[0]?.href ?? "#"
 
               return (
@@ -157,7 +167,7 @@ export default function PrimaryNav() {
                       href={href}
                       className="mt-2 inline-flex text-xs font-semibold uppercase tracking-[0.18em] text-[color:var(--text-body)] ui-link"
                     >
-                      Go to {item.label}
+                      {content.mobileGoToPrefix} {item.label}
                     </Link>
                   )}
                 </details>

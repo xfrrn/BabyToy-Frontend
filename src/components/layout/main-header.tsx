@@ -4,15 +4,26 @@ import { FormEvent, useState } from "react"
 import Link from "next/link"
 import { usePathname, useRouter } from "next/navigation"
 
-import { BRAND_NAME, HEADER_LINKS } from "@lib/data/homepage"
 import HomeLink from "./home-link"
+
+type HeaderContent = {
+  brandName: string
+  searchAriaLabel: string
+  searchPlaceholder: string
+  mobileMenuLabel: string
+  links: {
+    label: string
+    detail: string
+    href: string
+  }[]
+}
 
 function getCountryCode(pathname: string) {
   const parts = pathname.split("/").filter(Boolean)
   return parts[0] || "us"
 }
 
-export default function MainHeader() {
+export default function MainHeader({ content }: { content: HeaderContent }) {
   const pathname = usePathname()
   const router = useRouter()
   const [query, setQuery] = useState("")
@@ -30,7 +41,7 @@ export default function MainHeader() {
       <div className="content-container flex flex-col gap-4 py-5 md:flex-row md:items-center md:justify-between">
         <div className="flex items-center justify-between md:w-[220px]">
           <div className="text-lg font-semibold tracking-[0.2em] text-[color:var(--text-strong)]">
-            {BRAND_NAME}
+            {content.brandName}
           </div>
           <div className="flex items-center gap-2">
             <HomeLink />
@@ -38,7 +49,7 @@ export default function MainHeader() {
               className="rounded-full border border-[color:var(--border-soft)] bg-[var(--bg-card)] px-3 py-1 text-xs uppercase tracking-[0.2em] text-[color:var(--text-body)] md:hidden"
               type="button"
             >
-              Menu
+              {content.mobileMenuLabel}
             </button>
           </div>
         </div>
@@ -50,7 +61,7 @@ export default function MainHeader() {
           <button
             className="flex h-8 w-8 items-center justify-center rounded-full bg-[color:var(--accent)] text-white transition duration-300 ease-out hover:bg-[color:var(--accent-strong)]"
             type="submit"
-            aria-label="Search"
+            aria-label={content.searchAriaLabel}
           >
             <svg
               viewBox="0 0 24 24"
@@ -68,12 +79,12 @@ export default function MainHeader() {
             type="search"
             value={query}
             onChange={(event) => setQuery(event.target.value)}
-            placeholder="Search by age, grade, or category"
+            placeholder={content.searchPlaceholder}
           />
         </form>
 
         <div className="hidden items-center justify-end gap-6 text-xs text-[color:var(--text-body)] md:flex">
-          {HEADER_LINKS.map((item) => (
+          {content.links.map((item) => (
             <Link
               key={item.label}
               href={item.href}
@@ -88,7 +99,7 @@ export default function MainHeader() {
         </div>
 
         <div className="flex items-center justify-between gap-4 text-xs text-black/60 md:hidden">
-          {HEADER_LINKS.map((item) => (
+          {content.links.map((item) => (
             <Link
               key={item.label}
               href={item.href}

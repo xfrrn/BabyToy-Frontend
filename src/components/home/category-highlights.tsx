@@ -2,27 +2,30 @@ import Image from "next/image"
 import Link from "next/link"
 
 import { CATEGORY_HIGHLIGHTS } from "@lib/data/homepage"
+import { getSiteContentSection } from "@lib/data/site-content"
 
-export default function CategoryHighlights() {
+export default async function CategoryHighlights() {
+  const content = await getSiteContentSection("category_highlights", CATEGORY_HIGHLIGHTS)
+
   return (
     <section className="bg-[var(--bg-canvas)]">
       <div className="content-container py-16">
         <div className="mb-8 flex flex-wrap items-end justify-between gap-4">
           <div>
             <p className="text-xs uppercase tracking-[0.3em] text-black/40">
-              {CATEGORY_HIGHLIGHTS.eyebrow}
+              {content.eyebrow}
             </p>
             <h2 className="mt-2 text-3xl font-semibold text-black">
-              {CATEGORY_HIGHLIGHTS.title}
+              {content.title}
             </h2>
             <p className="mt-3 max-w-2xl text-sm text-black/60">
-              {CATEGORY_HIGHLIGHTS.subtitle}
+              {content.subtitle}
             </p>
           </div>
         </div>
 
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {CATEGORY_HIGHLIGHTS.items.map((card) => (
+          {content.items.map((card) => (
             <Link
               key={card.title}
               href={card.href}
@@ -44,7 +47,7 @@ export default function CategoryHighlights() {
               <div className="flex items-start justify-between p-6">
                 <div className="min-w-0">
                   <p className="text-xs uppercase tracking-[0.25em] text-[color:var(--text-muted)] transition duration-300 ease-out group-hover:text-[color:var(--accent)]">
-                    Category
+                    {content.eyebrow}
                   </p>
                   <h3 className="mt-3 text-lg font-semibold text-black transition duration-300 ease-out group-hover:-translate-y-0.5 group-hover:text-[color:var(--accent-strong)]">
                     {card.title}

@@ -17,6 +17,12 @@ type ProductActionsProps = {
   product: HttpTypes.StoreProduct
   region: HttpTypes.StoreRegion
   disabled?: boolean
+  content?: {
+    addToCartLabel: string
+    selectVariantLabel: string
+    outOfStockLabel: string
+    selectOptionsLabel: string
+  }
 }
 
 const optionsAsKeymap = (
@@ -31,6 +37,7 @@ const optionsAsKeymap = (
 export default function ProductActions({
   product,
   disabled,
+  content,
 }: ProductActionsProps) {
   const router = useRouter()
   const pathname = usePathname()
@@ -180,10 +187,10 @@ export default function ProductActions({
           data-testid="add-product-button"
         >
           {!selectedVariant && !options
-            ? "Select variant"
+            ? content?.selectVariantLabel || "Select variant"
             : !inStock || !isValidVariant
-            ? "Out of stock"
-            : "Add to cart"}
+            ? content?.outOfStockLabel || "Out of stock"
+            : content?.addToCartLabel || "Add to cart"}
         </Button>
         <MobileActions
           product={product}
@@ -195,6 +202,7 @@ export default function ProductActions({
           isAdding={isAdding}
           show={!inView}
           optionsDisabled={!!disabled || isAdding}
+          content={content}
         />
       </div>
     </>

@@ -1,8 +1,9 @@
-﻿import Link from "next/link"
 import Image from "next/image"
+import Link from "next/link"
 
 import { HttpTypes } from "@medusajs/types"
-
+import { PRODUCT_UI_CONTENT } from "@lib/data/homepage"
+import { getSiteContentSection } from "@lib/data/site-content"
 import {
   getAgeRange,
   getHighlight,
@@ -10,7 +11,7 @@ import {
   getToyType,
 } from "@lib/util/product-meta"
 
-export default function ProductCard({
+export default async function ProductCard({
   product,
   countryCode,
   priceLabel,
@@ -19,6 +20,10 @@ export default function ProductCard({
   countryCode: string
   priceLabel: string
 }) {
+  const content = await getSiteContentSection(
+    "product_ui_content",
+    PRODUCT_UI_CONTENT
+  )
   const ageRange = getAgeRange(product)
   const toyType = getToyType(product)
   const highlight = getHighlight(product)
@@ -40,7 +45,7 @@ export default function ProductCard({
           />
         ) : (
           <div className="flex h-full items-center justify-center text-xs uppercase tracking-[0.2em] text-[color:var(--text-muted)]">
-            No Image
+            {content.noImageLabel}
           </div>
         )}
       </div>
@@ -50,13 +55,16 @@ export default function ProductCard({
             {product.title}
           </h3>
           {product.subtitle ? (
-            <p className="mt-2 text-sm text-[color:var(--text-body)]">{product.subtitle}</p>
+            <p className="mt-2 text-sm text-[color:var(--text-body)]">
+              {product.subtitle}
+            </p>
           ) : null}
         </div>
         <div className="flex flex-wrap gap-2">
           {ageRange ? (
             <span className="rounded-full bg-[var(--accent-soft)] px-3 py-1 text-xs font-semibold text-[color:var(--accent-strong)]">
-              Age {ageRange}
+              {content.agePrefix}
+              {ageRange}
             </span>
           ) : null}
           {toyType ? (
@@ -79,15 +87,14 @@ export default function ProductCard({
           ))}
         </div>
         <p className="line-clamp-2 text-sm text-[color:var(--text-body)]">
-          {product.description ||
-            "Age-appropriate play with clear guidance for parents."}
+          {product.description || content.fallbackDescription}
         </p>
         <div className="mt-auto flex items-center justify-between text-sm">
           <span className="font-semibold text-[color:var(--text-strong)] transition duration-300 ease-out group-hover:text-[color:var(--accent-strong)]">
             {priceLabel}
           </span>
           <span className="text-xs uppercase tracking-[0.2em] text-[color:var(--text-muted)] transition duration-300 ease-out group-hover:text-[color:var(--accent)]">
-            View details
+            {content.viewDetailsLabel}
           </span>
         </div>
       </div>

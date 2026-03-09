@@ -1,4 +1,5 @@
 import { FEATURED_PRODUCTS } from "@lib/data/homepage"
+import { getSiteContentSection } from "@lib/data/site-content"
 import ProductsRow from "./products-row"
 
 export default async function FeaturedProductsSection({
@@ -6,13 +7,15 @@ export default async function FeaturedProductsSection({
 }: {
   countryCode: string
 }) {
+  const content = await getSiteContentSection("featured_products", FEATURED_PRODUCTS)
+
   return (
     <ProductsRow
       countryCode={countryCode}
-      title={FEATURED_PRODUCTS.eyebrow}
-      subtitle={FEATURED_PRODUCTS.title}
-      description={FEATURED_PRODUCTS.subtitle}
-      strategy={FEATURED_PRODUCTS.strategy}
+      title={content.eyebrow}
+      subtitle={content.title}
+      description={content.subtitle}
+      strategy={content.strategy}
     />
   )
 }

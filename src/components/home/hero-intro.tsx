@@ -1,9 +1,12 @@
 import Image from "next/image"
 import Link from "next/link"
 
-import { HERO_IMAGE, PROMO_HERO } from "@lib/data/homepage"
+import { HERO_CONTENT, HERO_IMAGE } from "@lib/data/homepage"
+import { getSiteContentSection } from "@lib/data/site-content"
 
-export default function HeroIntro() {
+export default async function HeroIntro() {
+  const content = await getSiteContentSection("hero_content", HERO_CONTENT)
+
   return (
     <section className="bg-[var(--bg-canvas)]">
       <div className="content-container ui-section-tight">
@@ -17,29 +20,32 @@ export default function HeroIntro() {
           <div className="grid min-h-[460px] items-stretch lg:min-h-[560px] lg:grid-cols-[1.05fr_0.95fr]">
             <div className="relative z-10 flex flex-col justify-center px-8 py-14 text-white md:px-14 lg:px-16">
               <span className="inline-flex w-fit rounded-full bg-white/14 px-4 py-2 text-[11px] font-bold uppercase tracking-[0.26em] text-white/90 backdrop-blur-sm">
-                {PROMO_HERO.eyebrow}
+                {content.eyebrow}
               </span>
               <h1 className="mt-6 max-w-[10ch] text-4xl font-extrabold leading-[0.95] tracking-[-0.04em] text-[#fff8ef] md:text-6xl">
-                Love Play,
-                <br />
-                Learn.
+                {content.title.split("\n").map((line, index) => (
+                  <span key={`${line}-${index}`}>
+                    {index > 0 ? <br /> : null}
+                    {line}
+                  </span>
+                ))}
               </h1>
               <p className="mt-6 max-w-xl text-base leading-7 text-white/88 md:text-lg">
-                Thoughtfully selected toys for playful learning, everyday discovery, and joyful family moments.
+                {content.body}
               </p>
 
               <div className="mt-8 flex flex-wrap gap-4">
                 <Link
-                  href="/products"
+                  href={content.primaryCtaHref}
                   className="inline-flex items-center gap-2 rounded-full bg-[#f2a26b] px-6 py-3 text-sm font-bold text-[#342d24] transition duration-300 ease-out hover:-translate-y-0.5 hover:bg-[#f6b27f]"
                 >
-                  Discover All Products
+                  {content.primaryCtaLabel}
                 </Link>
                 <Link
-                  href={PROMO_HERO.ctaHref}
+                  href={content.secondaryCtaHref}
                   className="inline-flex items-center gap-2 rounded-full border border-white/28 bg-white/10 px-6 py-3 text-sm font-bold text-white backdrop-blur-sm transition duration-300 ease-out hover:bg-white/18"
                 >
-                  {PROMO_HERO.ctaLabel}
+                  {content.secondaryCtaLabel}
                 </Link>
               </div>
             </div>
@@ -60,10 +66,10 @@ export default function HeroIntro() {
 
               <div className="absolute left-6 top-6 rounded-[1.75rem] bg-[rgba(255,248,239,0.9)] px-5 py-4 text-[#342d24] shadow-[0_20px_35px_-28px_rgba(52,45,36,0.38)] backdrop-blur-sm">
                 <p className="text-[11px] font-bold uppercase tracking-[0.24em] text-[color:var(--accent-strong)]">
-                  KID GOFUN
+                  {content.badgeLabel}
                 </p>
                 <p className="mt-2 text-sm font-semibold">
-                  Bright ideas for curious little minds.
+                  {content.badgeText}
                 </p>
               </div>
             </div>

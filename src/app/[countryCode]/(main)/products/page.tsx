@@ -1,9 +1,11 @@
-﻿import Link from "next/link"
+import Link from "next/link"
 import { Metadata } from "next"
 
+import { HttpTypes } from "@medusajs/types"
+import { PRODUCTS_PAGE_CONTENT } from "@lib/data/homepage"
 import { listProducts } from "@lib/data/products"
 import { getRegion } from "@lib/data/regions"
-import { HttpTypes } from "@medusajs/types"
+import { getSiteContentSection } from "@lib/data/site-content"
 import ProductPreview from "@modules/products/components/product-preview"
 
 type Props = {
@@ -28,6 +30,10 @@ function matchesQuery(product: HttpTypes.StoreProduct, q: string) {
 export default async function ProductsPage(props: Props) {
   const params = await props.params
   const searchParams = await props.searchParams
+  const content = await getSiteContentSection(
+    "products_page_content",
+    PRODUCTS_PAGE_CONTENT
+  )
 
   const region = await getRegion(params.countryCode)
   if (!region) {
@@ -55,28 +61,30 @@ export default async function ProductsPage(props: Props) {
         <div className="mb-8 flex items-start justify-between gap-6 rounded-3xl border border-black/5 bg-white/90 p-8 shadow-[0_20px_45px_-30px_rgba(0,0,0,0.35)]">
           <div>
             <p className="text-xs uppercase tracking-[0.3em] text-black/40">
-              Products
+              {content.eyebrow}
             </p>
             <h1 className="mt-3 text-3xl font-semibold text-black">
-              {query ? `Search results for "${query}"` : "All products"}
+              {query
+                ? `${content.searchTitlePrefix}${query}${content.searchTitleSuffix}`
+                : content.defaultTitle}
             </h1>
             <p className="mt-3 text-sm text-black/60">
               {query
-                ? `Showing ${filtered.length} results.`
-                : "Browse by age, category, or scenario from the homepage."}
+                ? `${content.searchResultsLabelPrefix}${filtered.length}${content.searchResultsLabelSuffix}`
+                : content.defaultDescription}
             </p>
           </div>
           <Link
             href={`/${params.countryCode}`}
             className="rounded-full border border-black/10 px-3 py-1 text-[10px] uppercase tracking-[0.2em] text-black/60 hover:border-black/20"
           >
-            Home
+            {content.homeLabel}
           </Link>
         </div>
 
         {filtered.length === 0 ? (
           <div className="rounded-3xl border border-dashed border-black/20 bg-white/70 p-12 text-center text-sm text-black/60">
-            No products match your search yet.
+            {content.emptyMessage}
           </div>
         ) : (
           <ul className="grid grid-cols-2 gap-6 md:grid-cols-4">

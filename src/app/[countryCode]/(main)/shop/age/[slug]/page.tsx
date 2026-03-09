@@ -5,46 +5,11 @@ import Link from "next/link"
 import { listProducts } from "@lib/data/products"
 import { getRegion } from "@lib/data/regions"
 import ShopLandingPage from "@components/shop/shop-landing-page"
+import { AGE_PAGE_CONTENT } from "@lib/data/homepage"
+import { getSiteContentSection } from "@lib/data/site-content"
 import { matchesAgeRange, matchesCategoryKey } from "@lib/util/product-meta"
 import { sortProducts } from "@lib/util/shop-sort"
 import ShopSortBar from "@components/shop/shop-sort-bar"
-
-const AGE_PAGES: Record<string, { title: string; description: string }> = {
-  "0-24-months": {
-    title: "0-24 Months",
-    description: "Gentle sensory discovery and early developmental play.",
-  },
-  "2-4-years": {
-    title: "2-4 Years",
-    description: "Early imagination, movement, and hands-on exploration.",
-  },
-  "5-7-years": {
-    title: "5-7 Years",
-    description: "Building focus, confidence, and creative problem solving.",
-  },
-  "8-10-years": {
-    title: "8-10 Years",
-    description: "Independent learning tools for growing curious minds.",
-  },
-  "11-13-years": {
-    title: "11-13 Years",
-    description: "More advanced challenges for deeper thinking and practice.",
-  },
-  "14-plus-years": {
-    title: "14+ Years",
-    description: "Advanced picks for teens and older learners.",
-  },
-}
-
-const CATEGORY_FILTERS = [
-  { label: "All", value: "all" },
-  { label: "Building", value: "building" },
-  { label: "Sensory", value: "sensory" },
-  { label: "Puzzles", value: "puzzles" },
-  { label: "STEM", value: "stem" },
-  { label: "Pretend", value: "pretend" },
-  { label: "Travel", value: "travel" },
-]
 
 type Props = {
   params: Promise<{ countryCode: string; slug: string }>
@@ -53,11 +18,12 @@ type Props = {
 
 export async function generateMetadata(props: Props): Promise<Metadata> {
   const params = await props.params
-  const page = AGE_PAGES[params.slug]
+  const content = await getSiteContentSection("age_page_content", AGE_PAGE_CONTENT)
+  const page = content.pages.find((item) => item.slug === params.slug)
   if (!page) return { title: "Age Collection" }
 
   return {
-    title: `Ages ${page.title} | Shop by Age`,
+    title: `${content.titlePrefix}${page.title} | Shop by Age`,
     description: page.description,
   }
 }
@@ -65,7 +31,8 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
 export default async function AgeLandingPage(props: Props) {
   const params = await props.params
   const searchParams = await props.searchParams
-  const page = AGE_PAGES[params.slug]
+  const content = await getSiteContentSection("age_page_content", AGE_PAGE_CONTENT)
+  const page = content.pages.find((item) => item.slug === params.slug)
 
   if (!page) {
     notFound()
@@ -100,17 +67,17 @@ export default async function AgeLandingPage(props: Props) {
 
   return (
     <ShopLandingPage
-      eyebrow="Shop by age"
-      title={`Ages ${page.title}`}
+      eyebrow={content.eyebrow}
+      title={`${content.titlePrefix}${page.title}`}
       description={page.description}
-      emptyMessage="No products tagged for this age yet. Add metadata.age_range to match this age group."
+      emptyMessage={content.emptyMessage}
       products={sorted}
       region={region}
       homeHref={`/${params.countryCode}`}
       actions={
         <div className="space-y-4">
           <div className="flex flex-wrap gap-2">
-            {CATEGORY_FILTERS.map((filter) => (
+            {content.filters.map((filter) => (
               <Link
                 key={filter.value}
                 href={{

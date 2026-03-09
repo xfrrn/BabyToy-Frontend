@@ -43,6 +43,14 @@ export const HEADER_LINKS = [
   },
 ]
 
+export const HEADER_CONTENT = {
+  brandName: BRAND_NAME,
+  searchAriaLabel: "Search",
+  searchPlaceholder: "Search by age, grade, or category",
+  mobileMenuLabel: "Menu",
+  links: HEADER_LINKS,
+}
+
 export const MARKETING_NAV: MarketingNavItem[] = [
   { label: "ALL PRODUCTS", href: "/products" },
   {
@@ -80,10 +88,33 @@ export const MARKETING_NAV: MarketingNavItem[] = [
   },
 ]
 
+export const NAV_CONTENT = {
+  mobileBrowseLabel: "Browse",
+  mobileCloseLabel: "Close",
+  exploreLabel: "Explore",
+  megaMenuIntroLabelPrefix: "Browse",
+  megaMenuIntroDescription: "Curated shortcuts to help families shop faster.",
+  mobileGoToPrefix: "Go to",
+  items: MARKETING_NAV,
+}
+
 export const HERO_IMAGE = {
   alt: "FritzS Learning hero",
   src:
     "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=2000&q=80",
+}
+
+export const HERO_CONTENT = {
+  eyebrow: "Featured",
+  title: "Love Play,\nLearn.",
+  body:
+    "Thoughtfully selected toys for playful learning, everyday discovery, and joyful family moments.",
+  primaryCtaLabel: "Discover All Products",
+  primaryCtaHref: "/products",
+  secondaryCtaLabel: "View Toy",
+  secondaryCtaHref: "/shop/scenario/featured",
+  badgeLabel: "KID GOFUN",
+  badgeText: "Bright ideas for curious little minds.",
 }
 
 export const BRAND_INTRO = {
@@ -101,6 +132,132 @@ export const FEATURED_PRODUCTS = {
   title: "All Products",
   subtitle: "Browse all learning tools.",
   strategy: "default" as const,
+}
+
+export const CATEGORY_PAGE_CONTENT = {
+  eyebrow: "Category",
+  emptyMessage:
+    "No products tagged for this category yet. Add metadata.category_key to match this category.",
+  pages: [
+    {
+      slug: "building",
+      title: "Building Toys",
+      description: "Construction toys that build confidence and focus.",
+    },
+    {
+      slug: "sensory",
+      title: "Sensory Play",
+      description: "Textures and motion for calm discovery.",
+    },
+    {
+      slug: "puzzles",
+      title: "Puzzles",
+      description: "Problem solving that feels fun, not frustrating.",
+    },
+    {
+      slug: "stem",
+      title: "STEM Learning",
+      description: "Curiosity-led science and engineering play.",
+    },
+    {
+      slug: "pretend",
+      title: "Pretend Play",
+      description: "Role play for storytelling and empathy.",
+    },
+    {
+      slug: "travel",
+      title: "Travel Toys",
+      description: "Compact play for on-the-go moments.",
+    },
+  ],
+}
+
+export const AGE_PAGE_CONTENT = {
+  eyebrow: "Shop by age",
+  titlePrefix: "Ages ",
+  emptyMessage:
+    "No products tagged for this age yet. Add metadata.age_range to match this age group.",
+  filters: [
+    { label: "All", value: "all" },
+    { label: "Building", value: "building" },
+    { label: "Sensory", value: "sensory" },
+    { label: "Puzzles", value: "puzzles" },
+    { label: "STEM", value: "stem" },
+    { label: "Pretend", value: "pretend" },
+    { label: "Travel", value: "travel" },
+  ],
+  pages: [
+    {
+      slug: "0-24-months",
+      title: "0-24 Months",
+      description: "Gentle sensory discovery and early developmental play.",
+    },
+    {
+      slug: "2-4-years",
+      title: "2-4 Years",
+      description: "Early imagination, movement, and hands-on exploration.",
+    },
+    {
+      slug: "5-7-years",
+      title: "5-7 Years",
+      description: "Building focus, confidence, and creative problem solving.",
+    },
+    {
+      slug: "8-10-years",
+      title: "8-10 Years",
+      description: "Independent learning tools for growing curious minds.",
+    },
+    {
+      slug: "11-13-years",
+      title: "11-13 Years",
+      description: "More advanced challenges for deeper thinking and practice.",
+    },
+    {
+      slug: "14-plus-years",
+      title: "14+ Years",
+      description: "Advanced picks for teens and older learners.",
+    },
+  ],
+}
+
+export const PRODUCTS_PAGE_CONTENT = {
+  eyebrow: "Products",
+  defaultTitle: "All products",
+  searchTitlePrefix: 'Search results for "',
+  searchTitleSuffix: '"',
+  defaultDescription: "Browse by age, category, or scenario from the homepage.",
+  searchResultsLabelPrefix: "Showing ",
+  searchResultsLabelSuffix: " results.",
+  homeLabel: "Home",
+  emptyMessage: "No products match your search yet.",
+}
+
+export const PRODUCT_UI_CONTENT = {
+  addToCartLabel: "Add to cart",
+  selectVariantLabel: "Select variant",
+  outOfStockLabel: "Out of stock",
+  selectOptionsLabel: "Select Options",
+  viewDetailsLabel: "View details",
+  agePrefix: "Age ",
+  agesPrefix: "Ages ",
+  noImageLabel: "No Image",
+  fallbackDescription: "Age-appropriate play with clear guidance for parents.",
+  productInformationLabel: "Product Information",
+  shippingReturnsLabel: "Shipping & Returns",
+  materialLabel: "Material",
+  countryOfOriginLabel: "Country of origin",
+  typeLabel: "Type",
+  weightLabel: "Weight",
+  dimensionsLabel: "Dimensions",
+  fastDeliveryTitle: "Fast delivery",
+  fastDeliveryBody:
+    "Your package will arrive in 3-5 business days at your pick up location or in the comfort of your home.",
+  simpleExchangesTitle: "Simple exchanges",
+  simpleExchangesBody:
+    "Is the fit not quite right? No worries - we'll exchange your product for a new one.",
+  easyReturnsTitle: "Easy returns",
+  easyReturnsBody:
+    "Just return your product and we'll refund your money. No questions asked - we'll do our best to make sure your return is hassle-free.",
 }
 
 export const COLLECTION_SPOTLIGHT = {
@@ -203,6 +360,50 @@ export const CATEGORY_HIGHLIGHTS = {
   ],
 }
 
+export const AGE_HIGHLIGHTS = {
+  eyebrow: "Age",
+  title: "Shop by age",
+  subtitle: "Pick the right age range and jump straight into the matching products.",
+  items: [
+    {
+      value: "0-24",
+      unit: "Months",
+      title: "0-24 Months",
+      href: "/shop/age/0-24-months",
+    },
+    {
+      value: "2-4",
+      unit: "Years",
+      title: "2-4 Years",
+      href: "/shop/age/2-4-years",
+    },
+    {
+      value: "5-7",
+      unit: "Years",
+      title: "5-7 Years",
+      href: "/shop/age/5-7-years",
+    },
+    {
+      value: "8-10",
+      unit: "Years",
+      title: "8-10 Years",
+      href: "/shop/age/8-10-years",
+    },
+    {
+      value: "11-13",
+      unit: "Years",
+      title: "11-13 Years",
+      href: "/shop/age/11-13-years",
+    },
+    {
+      value: "14+",
+      unit: "Years",
+      title: "14+ Years",
+      href: "/shop/age/14-plus-years",
+    },
+  ],
+}
+
 export const BLOG_HIGHLIGHTS = {
   eyebrow: "From the blog",
   title: "Guides for thoughtful play",
@@ -262,6 +463,32 @@ export const PROMO_HERO = {
   body: "A magnetic building set that sparks calm, creative focus.",
   ctaLabel: "View Toy",
   ctaHref: "/shop/scenario/featured",
+}
+
+export const FOOTER_CONTENT = {
+  brandName: "KID GOFUN",
+  websiteLabel: "www.kidgofun.com",
+  websiteHref: "https://www.kidgofun.com",
+  contactLabel: "Contact: +86 15575725092",
+  contactHref: "tel:+8615575725092",
+  socialLinks: [
+    {
+      label: "WeChat",
+      href: process.env.NEXT_PUBLIC_WECHAT_URL || "#",
+    },
+    {
+      label: "WhatsApp",
+      href: process.env.NEXT_PUBLIC_WHATSAPP_URL || "#",
+    },
+    {
+      label: "Facebook",
+      href: process.env.NEXT_PUBLIC_FACEBOOK_URL || "#",
+    },
+    {
+      label: "Instagram",
+      href: process.env.NEXT_PUBLIC_INSTAGRAM_URL || "#",
+    },
+  ],
 }
 
 export const FOOTER_LINKS = {

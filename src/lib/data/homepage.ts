@@ -147,6 +147,62 @@ export const COLLECTION_SPOTLIGHT = {
   ],
 }
 
+export const CATEGORY_HIGHLIGHTS = {
+  eyebrow: "Category",
+  title: "Shop by category",
+  subtitle: "Explore product categories and find the learning style that fits best.",
+  items: [
+    {
+      title: "Building Toys",
+      description: "Construction sets and hands-on tools that build focus and confidence.",
+      ctaLabel: "Learn More",
+      href: "/shop/category/building",
+      image:
+        "https://images.unsplash.com/photo-1516627145497-ae6968895b74?auto=format&fit=crop&w=1200&q=80",
+    },
+    {
+      title: "Sensory Play",
+      description: "Textures, movement, and calming play experiences for curious kids.",
+      ctaLabel: "Learn More",
+      href: "/shop/category/sensory",
+      image:
+        "https://images.unsplash.com/photo-1516627145497-ae6968895b74?auto=format&fit=crop&w=1200&q=80",
+    },
+    {
+      title: "Puzzles",
+      description: "Problem-solving activities designed to feel engaging, not overwhelming.",
+      ctaLabel: "Learn More",
+      href: "/shop/category/puzzles",
+      image:
+        "https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?auto=format&fit=crop&w=1200&q=80",
+    },
+    {
+      title: "STEM Learning",
+      description: "Science, engineering, and logic tools for discovery-led learning.",
+      ctaLabel: "Learn More",
+      href: "/shop/category/stem",
+      image:
+        "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=1200&q=80",
+    },
+    {
+      title: "Pretend Play",
+      description: "Role-play toys that support storytelling, empathy, and imagination.",
+      ctaLabel: "Learn More",
+      href: "/shop/category/pretend",
+      image:
+        "https://images.unsplash.com/photo-1515488042361-ee00e0ddd4e4?auto=format&fit=crop&w=1200&q=80",
+    },
+    {
+      title: "Travel Toys",
+      description: "Compact learning toys that are easy to take on the go.",
+      ctaLabel: "Learn More",
+      href: "/shop/category/travel",
+      image:
+        "https://images.unsplash.com/photo-1503919545889-aef636e10ad4?auto=format&fit=crop&w=1200&q=80",
+    },
+  ],
+}
+
 export const BLOG_HIGHLIGHTS = {
   eyebrow: "From the blog",
   title: "Guides for thoughtful play",

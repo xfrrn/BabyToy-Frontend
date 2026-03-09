@@ -29,25 +29,25 @@ export default function ShopLandingPage({
         <div className="mb-6 flex items-center justify-between">
           <Link
             href={homeHref}
-            className="rounded-full border border-black/10 px-3 py-1 text-[10px] uppercase tracking-[0.2em] text-black/60 hover:border-black/20"
+            className="inline-flex items-center gap-2 rounded-full border border-[color:var(--border-soft)] bg-[var(--bg-surface)] px-4 py-2 text-[10px] font-semibold uppercase tracking-[0.2em] text-[color:var(--text-body)] transition duration-300 ease-out hover:-translate-y-0.5 hover:border-[color:var(--accent)] hover:bg-[var(--accent-soft)] hover:text-[color:var(--accent-strong)]"
           >
             Home
           </Link>
         </div>
 
-        <div className="rounded-3xl border border-black/5 bg-white/90 p-8 shadow-[0_20px_45px_-30px_rgba(0,0,0,0.35)]">
-          <p className="text-xs uppercase tracking-[0.3em] text-black/40">
+        <div className="rounded-3xl border border-[color:var(--border-soft)] bg-[rgba(255,250,242,0.9)] p-8 shadow-[0_20px_45px_-30px_rgba(92,72,45,0.18)]">
+          <p className="text-xs uppercase tracking-[0.3em] text-[color:var(--text-muted)]">
             {eyebrow}
           </p>
-          <h1 className="mt-3 text-3xl font-semibold text-black">{title}</h1>
-          <p className="mt-3 text-sm text-black/60">{description}</p>
+          <h1 className="mt-3 text-3xl font-semibold text-[color:var(--text-strong)]">{title}</h1>
+          <p className="mt-3 text-sm text-[color:var(--text-body)]">{description}</p>
         </div>
 
         {actions ? <div className="mt-6">{actions}</div> : null}
 
         <div className="mt-10">
           {products.length === 0 ? (
-            <div className="rounded-3xl border border-dashed border-black/20 bg-white/70 p-12 text-center text-sm text-black/60">
+            <div className="rounded-3xl border border-dashed border-[color:var(--border-soft)] bg-[rgba(255,250,242,0.72)] p-12 text-center text-sm text-[color:var(--text-body)]">
               {emptyMessage}
             </div>
           ) : (
@@ -55,7 +55,7 @@ export default function ShopLandingPage({
               {products.map((product) => (
                 <li
                   key={product.id}
-                  className="rounded-3xl border border-black/5 bg-white p-4 shadow-[0_18px_40px_-30px_rgba(0,0,0,0.3)]"
+                  className="rounded-3xl border border-[color:var(--border-soft)] bg-[var(--bg-card)] p-4 shadow-[0_18px_40px_-30px_rgba(92,72,45,0.18)]"
                 >
                   <ProductPreview product={product} region={region} />
                 </li>

@@ -101,12 +101,12 @@ export default async function Footer() {
         <div className="flex flex-col items-center py-24 text-center">
           <LocalizedClientLink
             href="/"
-            className="text-3xl font-semibold uppercase tracking-[0.18em] text-black ui-link"
+            className="text-3xl font-semibold uppercase tracking-[0.18em] text-[color:var(--text-strong)] ui-link"
           >
             {BRAND_NAME}
           </LocalizedClientLink>
 
-          <div className="mt-10 flex flex-col items-center gap-3 text-3xl font-medium text-black md:text-4xl">
+          <div className="mt-10 flex flex-col items-center gap-3 text-3xl font-medium text-[color:var(--text-strong)] md:text-4xl">
             <Link href={WEBSITE_HREF} className="ui-link">
               {WEBSITE_LABEL}
             </Link>
@@ -121,7 +121,7 @@ export default async function Footer() {
                 key={item.label}
                 href={item.href}
                 aria-label={item.label}
-                className={`flex h-14 w-14 items-center justify-center rounded-full border border-[color:var(--border-soft)] bg-[var(--bg-card)] text-black transition duration-200 ease-out hover:border-black/20 hover:bg-black hover:text-white ${
+                className={`flex h-14 w-14 items-center justify-center rounded-full border border-[color:var(--border-soft)] bg-[var(--bg-card)] text-[color:var(--text-strong)] transition duration-300 ease-out hover:-translate-y-1 hover:border-[color:var(--accent)] hover:bg-[var(--accent-soft)] hover:text-[color:var(--accent-strong)] hover:shadow-[0_18px_34px_-24px_rgba(92,72,45,0.22)] ${
                   item.href === "#" ? "pointer-events-none opacity-50" : ""
                 }`}
               >
@@ -131,7 +131,7 @@ export default async function Footer() {
           </div>
         </div>
 
-        <div className="mb-16 flex w-full items-center justify-center text-ui-fg-muted">
+        <div className="mb-16 flex w-full items-center justify-center text-[color:var(--text-muted)]">
           <Text className="txt-compact-small">
             (c) {new Date().getFullYear()} {BRAND_NAME}. All rights reserved.
           </Text>

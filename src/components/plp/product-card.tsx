@@ -27,62 +27,66 @@ export default function ProductCard({
   return (
     <Link
       href={`/${countryCode}/products/${product.handle}`}
-      className="group ui-card ui-card-hover flex h-full flex-col overflow-hidden focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#1f5eff]"
+      className="group ui-card ui-card-hover flex h-full flex-col overflow-hidden focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[color:var(--accent)]"
     >
-      <div className="relative aspect-[4/3] w-full overflow-hidden bg-black/5">
+      <div className="relative aspect-[4/3] w-full overflow-hidden bg-[var(--bg-panel)]">
         {product.thumbnail ? (
           <Image
             src={product.thumbnail}
             alt={product.title}
             fill
             sizes="(min-width: 768px) 50vw, 100vw"
-            className="object-cover transition duration-300 ease-out group-hover:scale-[1.03]"
+            className="object-cover transition duration-500 ease-out group-hover:scale-[1.06]"
           />
         ) : (
-          <div className="flex h-full items-center justify-center text-xs uppercase tracking-[0.2em] text-black/40">
+          <div className="flex h-full items-center justify-center text-xs uppercase tracking-[0.2em] text-[color:var(--text-muted)]">
             No Image
           </div>
         )}
       </div>
       <div className="flex flex-1 flex-col gap-3 p-6">
         <div>
-          <h3 className="text-xl font-semibold text-black">{product.title}</h3>
+          <h3 className="text-xl font-semibold text-[color:var(--text-strong)] transition duration-300 ease-out group-hover:text-[color:var(--accent-strong)]">
+            {product.title}
+          </h3>
           {product.subtitle ? (
-            <p className="mt-2 text-sm text-black/60">{product.subtitle}</p>
+            <p className="mt-2 text-sm text-[color:var(--text-body)]">{product.subtitle}</p>
           ) : null}
         </div>
         <div className="flex flex-wrap gap-2">
           {ageRange ? (
-            <span className="rounded-full bg-emerald-50 px-3 py-1 text-xs font-semibold text-emerald-700">
+            <span className="rounded-full bg-[var(--accent-soft)] px-3 py-1 text-xs font-semibold text-[color:var(--accent-strong)]">
               Age {ageRange}
             </span>
           ) : null}
           {toyType ? (
-            <span className="rounded-full bg-blue-50 px-3 py-1 text-xs font-semibold text-blue-700">
+            <span className="rounded-full bg-[rgba(217,109,79,0.12)] px-3 py-1 text-xs font-semibold text-[color:var(--accent-warm)]">
               {toyType}
             </span>
           ) : null}
           {highlight ? (
-            <span className="rounded-full bg-amber-50 px-3 py-1 text-xs font-semibold text-amber-700">
+            <span className="rounded-full bg-[rgba(245,193,78,0.16)] px-3 py-1 text-xs font-semibold text-[#b77712]">
               {highlight}
             </span>
           ) : null}
           {skills.slice(0, 1).map((skill) => (
             <span
               key={skill}
-              className="rounded-full bg-neutral-100 px-3 py-1 text-xs text-neutral-700"
+              className="rounded-full bg-[rgba(255,250,242,0.88)] px-3 py-1 text-xs text-[color:var(--text-body)]"
             >
               {skill}
             </span>
           ))}
         </div>
-        <p className="text-sm text-black/70 line-clamp-2">
+        <p className="line-clamp-2 text-sm text-[color:var(--text-body)]">
           {product.description ||
             "Age-appropriate play with clear guidance for parents."}
         </p>
         <div className="mt-auto flex items-center justify-between text-sm">
-          <span className="font-semibold text-black">{priceLabel}</span>
-          <span className="text-xs uppercase tracking-[0.2em] text-black/40">
+          <span className="font-semibold text-[color:var(--text-strong)] transition duration-300 ease-out group-hover:text-[color:var(--accent-strong)]">
+            {priceLabel}
+          </span>
+          <span className="text-xs uppercase tracking-[0.2em] text-[color:var(--text-muted)] transition duration-300 ease-out group-hover:text-[color:var(--accent)]">
             View details
           </span>
         </div>

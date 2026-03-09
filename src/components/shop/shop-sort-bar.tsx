@@ -34,9 +34,9 @@ export default function ShopSortBar({
   }
 
   return (
-    <div className="flex flex-wrap items-center justify-between gap-4 rounded-2xl border border-black/5 bg-white/90 px-4 py-3 text-sm text-black/60 shadow-[0_12px_30px_-24px_rgba(0,0,0,0.3)]">
+    <div className="flex flex-wrap items-center justify-between gap-4 rounded-2xl border border-[color:var(--border-soft)] bg-[rgba(255,250,242,0.9)] px-4 py-3 text-sm text-[color:var(--text-body)] shadow-[0_12px_30px_-24px_rgba(92,72,45,0.18)]">
       <div className="flex flex-wrap items-center gap-2">
-        <span className="text-xs uppercase tracking-[0.22em] text-black/40">
+        <span className="text-xs uppercase tracking-[0.22em] text-[color:var(--text-muted)]">
           Sort
         </span>
         <div className="flex flex-wrap gap-2">
@@ -49,8 +49,8 @@ export default function ShopSortBar({
               }}
               className={`rounded-full border px-3 py-1 text-xs transition ${
                 current === option.value
-                  ? "border-black/30 bg-black text-white"
-                  : "border-black/10 text-black/60 hover:border-black/20"
+                  ? "border-[color:var(--accent)] bg-[color:var(--accent)] text-white"
+                  : "border-[color:var(--border-soft)] text-[color:var(--text-body)] hover:border-[color:var(--accent)] hover:bg-[var(--accent-soft)] hover:text-[color:var(--accent-strong)]"
               }`}
             >
               {option.label}
@@ -58,7 +58,7 @@ export default function ShopSortBar({
           ))}
         </div>
       </div>
-      <span className="text-xs uppercase tracking-[0.22em] text-black/40">
+      <span className="text-xs uppercase tracking-[0.22em] text-[color:var(--text-muted)]">
         {total} items
       </span>
     </div>

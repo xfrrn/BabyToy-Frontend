@@ -18,14 +18,14 @@ export default function ProductPrice({
   const selectedPrice = variant ? variantPrice : cheapestPrice
 
   if (!selectedPrice) {
-    return <div className="block w-32 h-9 bg-gray-100 animate-pulse" />
+    return <div className="block h-9 w-32 animate-pulse rounded-full bg-[var(--bg-panel)]" />
   }
 
   return (
-    <div className="flex flex-col text-ui-fg-base">
+    <div className="rounded-[1.5rem] border border-[color:var(--border-soft)] bg-[rgba(255,250,242,0.78)] p-5 text-[color:var(--text-strong)] shadow-[0_14px_28px_-24px_rgba(92,72,45,0.18)]">
       <span
         className={clx("text-xl-semi", {
-          "text-ui-fg-interactive": selectedPrice.price_type === "sale",
+          "text-[color:var(--accent-strong)]": selectedPrice.price_type === "sale",
         })}
       >
         {!variant && "From "}
@@ -37,21 +37,21 @@ export default function ProductPrice({
         </span>
       </span>
       {selectedPrice.price_type === "sale" && (
-        <>
-          <p>
-            <span className="text-ui-fg-subtle">Original: </span>
+        <div className="mt-2 flex flex-col gap-1">
+          <p className="text-sm">
+            <span className="text-[color:var(--text-muted)]">Original: </span>
             <span
-              className="line-through"
+              className="line-through text-[color:var(--text-body)]"
               data-testid="original-product-price"
               data-value={selectedPrice.original_price_number}
             >
               {selectedPrice.original_price}
             </span>
           </p>
-          <span className="text-ui-fg-interactive">
+          <span className="text-sm font-semibold text-[color:var(--accent-warm)]">
             -{selectedPrice.percentage_diff}%
           </span>
-        </>
+        </div>
       )}
     </div>
   )

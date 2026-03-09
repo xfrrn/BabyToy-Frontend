@@ -137,7 +137,10 @@ export default function ProductActions({
 
   return (
     <>
-      <div className="flex flex-col gap-y-2" ref={actionsRef}>
+      <div
+        className="flex flex-col gap-y-4 rounded-[2rem] border border-[color:var(--border-soft)] bg-[rgba(255,250,242,0.9)] p-6 shadow-[0_18px_40px_-32px_rgba(92,72,45,0.18)]"
+        ref={actionsRef}
+      >
         <div>
           {(product.variants?.length ?? 0) > 1 && (
             <div className="flex flex-col gap-y-4">
@@ -172,7 +175,7 @@ export default function ProductActions({
             !isValidVariant
           }
           variant="primary"
-          className="w-full h-10"
+          className="h-12 w-full rounded-full border-0 bg-[color:var(--accent)] text-sm font-bold uppercase tracking-[0.18em] text-white shadow-[0_18px_30px_-20px_rgba(78,139,87,0.45)] transition duration-300 ease-out hover:-translate-y-0.5 hover:bg-[color:var(--accent-strong)]"
           isLoading={isAdding}
           data-testid="add-product-button"
         >

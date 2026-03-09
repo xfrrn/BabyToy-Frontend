@@ -96,9 +96,9 @@ export const BRAND_INTRO = {
 }
 
 export const FEATURED_PRODUCTS = {
-  eyebrow: "Featured products",
-  title: "Featured products",
-  subtitle: "Shop our most loved learning tools.",
+  eyebrow: "All Products",
+  title: "All Products",
+  subtitle: "Browse all learning tools.",
   strategy: "default" as const,
 }
 

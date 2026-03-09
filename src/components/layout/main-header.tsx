@@ -4,7 +4,7 @@ import { FormEvent, useState } from "react"
 import Link from "next/link"
 import { usePathname, useRouter } from "next/navigation"
 
-import { HEADER_LINKS } from "@lib/data/homepage"
+import { BRAND_NAME, HEADER_LINKS } from "@lib/data/homepage"
 import HomeLink from "./home-link"
 
 function getCountryCode(pathname: string) {
@@ -30,7 +30,7 @@ export default function MainHeader() {
       <div className="content-container flex flex-col gap-4 py-5 md:flex-row md:items-center md:justify-between">
         <div className="flex items-center justify-between md:w-[220px]">
           <div className="text-lg font-semibold tracking-[0.2em] text-black/80">
-            PLAYHOUSE
+            {BRAND_NAME}
           </div>
           <div className="flex items-center gap-2">
             <HomeLink />
@@ -77,7 +77,7 @@ export default function MainHeader() {
             <Link
               key={item.label}
               href={item.href}
-              className="flex flex-col items-end ui-link"
+              className={`flex flex-col items-end ui-link ${item.href === "#" ? "pointer-events-none opacity-50" : ""}`}
             >
               <span className="uppercase tracking-[0.2em] text-[10px]">
                 {item.label}
@@ -85,29 +85,18 @@ export default function MainHeader() {
               <span className="text-sm text-black/80">{item.detail}</span>
             </Link>
           ))}
-          <div className="flex items-center gap-4 text-sm text-black/80">
-            <Link href="/account" className="uppercase tracking-[0.2em] text-xs ui-link">
-              Account
-            </Link>
-            <Link href="/cart" className="relative ui-link">
-              Cart
-              <span className="absolute -right-4 -top-2 flex h-5 w-5 items-center justify-center rounded-full bg-[#ff5b5b] text-[10px] font-semibold text-white">
-                0
-              </span>
-            </Link>
-          </div>
         </div>
 
         <div className="flex items-center justify-between gap-4 text-xs text-black/60 md:hidden">
-          <Link href="/account" className="text-sm text-black/80">
-            Account
-          </Link>
-          <Link href="/cart" className="relative text-sm text-black/80">
-            Cart
-            <span className="absolute -right-3 -top-2 flex h-5 w-5 items-center justify-center rounded-full bg-[#ff5b5b] text-[10px] font-semibold text-white">
-              0
-            </span>
-          </Link>
+          {HEADER_LINKS.map((item) => (
+            <Link
+              key={item.label}
+              href={item.href}
+              className={`text-sm uppercase tracking-[0.18em] text-black/80 ${item.href === "#" ? "pointer-events-none opacity-50" : ""}`}
+            >
+              {item.label}
+            </Link>
+          ))}
         </div>
       </div>
     </div>

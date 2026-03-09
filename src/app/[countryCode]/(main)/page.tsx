@@ -1,4 +1,3 @@
-import AnnouncementBar from "../../../components/layout/announcement-bar"
 import MainHeader from "../../../components/layout/main-header"
 import PrimaryNav from "../../../components/layout/primary-nav"
 import BlogHighlights from "../../../components/home/blog-highlights"
@@ -14,7 +13,6 @@ export default async function Home(props: {
   return (
     <div className="bg-[#f9f6f1]">
       <div className="sticky top-0 z-50">
-        <AnnouncementBar />
         <MainHeader />
         <PrimaryNav />
       </div>

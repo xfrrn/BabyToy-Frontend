@@ -21,91 +21,62 @@ export const ANNOUNCEMENT = {
   href: "/shop/scenario/shipping",
 }
 
+export const BRAND_NAME = "KID GOFUN"
+
+const emailAddress = process.env.NEXT_PUBLIC_CONTACT_EMAIL || ""
+
 export const HEADER_LINKS = [
-  { label: "Call", detail: "1-800-555-0199", href: "tel:1-800-555-0199" },
-  { label: "Help", detail: "Support", href: "/shop/scenario/shipping" },
-  { label: "Store", detail: "All Products", href: "/products" },
+  {
+    label: "Email",
+    detail: emailAddress || "Set contact email",
+    href: emailAddress ? `mailto:${emailAddress}` : "#",
+  },
+  {
+    label: "WeChat",
+    detail: "Chat now",
+    href: process.env.NEXT_PUBLIC_WECHAT_URL || "#",
+  },
+  {
+    label: "WhatsApp",
+    detail: "Chat now",
+    href: process.env.NEXT_PUBLIC_WHATSAPP_URL || "#",
+  },
 ]
 
 export const MARKETING_NAV: MarketingNavItem[] = [
+  { label: "ALL PRODUCTS", href: "/products" },
   {
-    label: "Featured",
-    groups: [
-      {
-        title: "Featured",
-        links: [
-          { label: "New", href: "/products?sort=created_at" },
-          { label: "Top-Rated", href: "/shop/scenario/favorites" },
-          { label: "Best Sellers", href: "/shop/scenario/featured" },
-        ],
-      },
-    ],
-  },
-  {
-    label: "Age",
-    groups: [
-      {
-        title: "Age",
-        links: [
-          { label: "18 mos", href: "/shop/age/0-12m" },
-          { label: "2 years", href: "/shop/age/1-2" },
-          { label: "3-4 years", href: "/shop/age/3-4" },
-          { label: "5-7 years", href: "/shop/age/5-7" },
-          { label: "8 and up", href: "/shop/age/8-plus" },
-        ],
-      },
-    ],
-  },
-  {
-    label: "Grade",
-    groups: [
-      {
-        title: "Grade",
-        links: [
-          { label: "Toddler", href: "/shop/age/1-2" },
-          { label: "Pre-K", href: "/shop/age/3-4" },
-          { label: "Kindergarten", href: "/shop/age/5-7" },
-          { label: "1st Grade and up", href: "/shop/age/8-plus" },
-        ],
-      },
-    ],
-  },
-  {
-    label: "Category",
+    label: "CATEGORY",
     groups: [
       {
         title: "Category",
         links: [
-          { label: "English Language", href: "/shop/category/english" },
-          { label: "MATH", href: "/shop/category/math" },
-          { label: "Engineering", href: "/shop/category/engineering" },
-          { label: "Science", href: "/shop/category/science" },
-          { label: "Fine Motor Skills Tools", href: "/shop/category/fine-motor" },
-          { label: "Social and Emotional Learning", href: "/shop/category/sel" },
+          { label: "Building Toys", href: "/shop/category/building" },
+          { label: "Sensory Play", href: "/shop/category/sensory" },
+          { label: "Puzzles", href: "/shop/category/puzzles" },
+          { label: "STEM Learning", href: "/shop/category/stem" },
+          { label: "Pretend Play", href: "/shop/category/pretend" },
+          { label: "Travel Toys", href: "/shop/category/travel" },
         ],
       },
     ],
   },
+  { label: "HOT SELL", href: "/shop/scenario/featured" },
   {
-    label: "Collections",
+    label: "AGE",
     groups: [
       {
-        title: "Collections",
+        title: "Age",
         links: [
-          { label: "Smart Match®", href: "/collections/smart-match" },
-          { label: "GeoTools®", href: "/collections/geotools" },
-          { label: "Nature Explorer®", href: "/collections/nature-explorer" },
-          { label: "How U Feel®", href: "/collections/how-u-feel" },
-          { label: "SrewMe Up®", href: "/collections/srewme-up" },
-          { label: "Tick! Tick! Tick! Clock®", href: "/collections/tick-tick" },
-          { label: "School Supplies", href: "/collections/school-supplies" },
+          { label: "0-12 Months", href: "/shop/age/0-12m" },
+          { label: "1-2 Years", href: "/shop/age/1-2" },
+          { label: "3-4 Years", href: "/shop/age/3-4" },
+          { label: "5-7 Years", href: "/shop/age/5-7" },
+          { label: "8+ Years", href: "/shop/age/8-plus" },
         ],
       },
     ],
   },
-  { label: "All Products", href: "/products" },
-  { label: "Blog", href: "/blog" },
-  { label: "Log in", href: "/account" },
 ]
 
 export const HERO_IMAGE = {
@@ -202,7 +173,7 @@ export const BLOG_HIGHLIGHTS = {
 }
 
 export const LEARNING_TOOLS_SPOTLIGHT = {
-  title: "多款玩住學教具，立即將小朋友潛能解鎖！",
+  title: "Learning tools for playful growth",
   items: [
     {
       title: "Fine Motor Skills",
@@ -211,7 +182,7 @@ export const LEARNING_TOOLS_SPOTLIGHT = {
       tag: "Category",
     },
     {
-      title: "How U Feel® Dial Your Feeling Chat",
+      title: "How U Feel庐 Dial Your Feeling Chat",
       description: "Emotion learning tool for mindful conversations.",
       href: "/products/how-u-feel",
       tag: "Product",
@@ -256,6 +227,6 @@ export const FOOTER_LINKS = {
   ],
   shippingText:
     "Free shipping for Hong Kong purchase upon $100. SF Express free shipping (min $100). Ships in about two working days. Free shipping for purchase over NTD380 in Taiwan.",
-  countries: ["China (CNY ¥)", "Hong Kong SAR (HKD $)", "Macao SAR (MOP P)", "Taiwan (TWD $)"],
+  countries: ["China (CNY 楼)", "Hong Kong SAR (HKD $)", "Macao SAR (MOP P)", "Taiwan (TWD $)"],
   payment: ["Apple Pay", "Google Pay", "Mastercard", "PayPal", "Shop Pay", "Union Pay", "Visa"],
 }

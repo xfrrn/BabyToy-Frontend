@@ -88,7 +88,7 @@ export default function PrimaryNav() {
                       ? `mega-menu-${item.label.toLowerCase().replace(/\s+/g, "-")}`
                       : undefined
                   }
-                  className={`flex items-center gap-2 border-b-2 px-1 pb-1 transition duration-200 ease-out ui-focus ${
+                  className={`flex items-center gap-2 border-b-2 px-1 pb-1 font-semibold uppercase tracking-[0.18em] transition duration-200 ease-out ui-focus ${
                     isActive
                       ? "border-[#1f5eff] text-black"
                       : openItem === item.label
@@ -128,7 +128,7 @@ export default function PrimaryNav() {
 
               return (
                 <details key={item.label} className="rounded-2xl border border-black/10 px-4 py-3">
-                  <summary className="cursor-pointer list-none font-semibold">
+                  <summary className="cursor-pointer list-none font-semibold uppercase tracking-[0.18em]">
                     {item.label}
                   </summary>
                   {item.groups ? (
@@ -153,7 +153,10 @@ export default function PrimaryNav() {
                       ))}
                     </div>
                   ) : (
-                    <Link href={href} className="mt-2 inline-flex text-xs text-black/60 ui-link">
+                    <Link
+                      href={href}
+                      className="mt-2 inline-flex text-xs font-semibold uppercase tracking-[0.18em] text-black/60 ui-link"
+                    >
                       Go to {item.label}
                     </Link>
                   )}

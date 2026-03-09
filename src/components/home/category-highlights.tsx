@@ -3,38 +3,38 @@
 const CATEGORY_CARDS = [
   {
     title: "Building Toys",
-    description: "Confidence-building construction and creative focus.",
-    ctaLabel: "Shop Building",
+    description: "Construction sets and hands-on tools that build focus and confidence.",
+    ctaLabel: "Learn More",
     href: "/shop/category/building",
   },
   {
     title: "Sensory Play",
-    description: "Textures and movement for calm discovery.",
-    ctaLabel: "Shop Sensory",
+    description: "Textures, movement, and calming play experiences for curious kids.",
+    ctaLabel: "Learn More",
     href: "/shop/category/sensory",
   },
   {
     title: "Puzzles",
-    description: "Problem solving that feels fun, not frustrating.",
-    ctaLabel: "Shop Puzzles",
+    description: "Problem-solving activities designed to feel engaging, not overwhelming.",
+    ctaLabel: "Learn More",
     href: "/shop/category/puzzles",
   },
   {
     title: "STEM Learning",
-    description: "Curiosity-led science and engineering play.",
-    ctaLabel: "Shop STEM",
+    description: "Science, engineering, and logic tools for discovery-led learning.",
+    ctaLabel: "Learn More",
     href: "/shop/category/stem",
   },
   {
     title: "Pretend Play",
-    description: "Role play for empathy and storytelling.",
-    ctaLabel: "Shop Pretend",
+    description: "Role-play toys that support storytelling, empathy, and imagination.",
+    ctaLabel: "Learn More",
     href: "/shop/category/pretend",
   },
   {
     title: "Travel Toys",
-    description: "Quiet, compact toys for on-the-go moments.",
-    ctaLabel: "Shop Travel",
+    description: "Compact learning toys that are easy to take on the go.",
+    ctaLabel: "Learn More",
     href: "/shop/category/travel",
   },
 ]
@@ -46,13 +46,13 @@ export default function CategoryHighlights() {
         <div className="mb-8 flex flex-wrap items-end justify-between gap-4">
           <div>
             <p className="text-xs uppercase tracking-[0.3em] text-black/40">
-              Categories
+              Category
             </p>
             <h2 className="mt-2 text-3xl font-semibold text-black">
-              Explore by play style
+              Shop by category
             </h2>
             <p className="mt-3 max-w-2xl text-sm text-black/60">
-              Some families shop by learning style first. Start here.
+              Explore product categories and find the learning style that fits best.
             </p>
           </div>
         </div>
@@ -66,11 +66,10 @@ export default function CategoryHighlights() {
               <div className="flex items-start justify-between">
                 <div>
                   <p className="text-xs uppercase tracking-[0.25em] text-black/40">
-                    {card.title}
+                    Category
                   </p>
-                  <p className="mt-3 text-lg font-semibold text-black">
-                    {card.description}
-                  </p>
+                  <h3 className="mt-3 text-lg font-semibold text-black">{card.title}</h3>
+                  <p className="mt-2 text-sm text-black/60">{card.description}</p>
                 </div>
                 <div className="ml-4 h-12 w-12 rounded-2xl bg-white/80" />
               </div>

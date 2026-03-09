@@ -96,7 +96,7 @@ function SocialIcon({ label }: { label: string }) {
 
 export default async function Footer() {
   return (
-    <footer className="w-full border-t border-ui-border-base bg-white">
+    <footer className="w-full border-t border-[color:var(--border-soft)] bg-[var(--bg-surface)]">
       <div className="content-container flex w-full flex-col">
         <div className="flex flex-col items-center py-24 text-center">
           <LocalizedClientLink
@@ -121,7 +121,7 @@ export default async function Footer() {
                 key={item.label}
                 href={item.href}
                 aria-label={item.label}
-                className={`flex h-14 w-14 items-center justify-center rounded-full border border-black/10 bg-[#f7f8fb] text-black transition duration-200 ease-out hover:border-black/20 hover:bg-black hover:text-white ${
+                className={`flex h-14 w-14 items-center justify-center rounded-full border border-[color:var(--border-soft)] bg-[var(--bg-card)] text-black transition duration-200 ease-out hover:border-black/20 hover:bg-black hover:text-white ${
                   item.href === "#" ? "pointer-events-none opacity-50" : ""
                 }`}
               >

@@ -49,7 +49,7 @@ export default async function ProductsRow({
   }
 
   return (
-    <section className="bg-white">
+    <section className="bg-[var(--bg-canvas)]">
       <div className="content-container ui-section">
         <div className="mb-8 flex flex-wrap items-end justify-between gap-4">
           <div>
@@ -69,13 +69,13 @@ export default async function ProductsRow({
                 : null
 
             return (
-              <li key={product.id} className="relative">
+              <li key={product.id} className="group relative">
                 {ageRange ? (
-                  <span className="absolute left-3 top-3 z-10 rounded-full border border-black/10 bg-white/90 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.2em] text-black/60 shadow-[0_8px_18px_-12px_rgba(0,0,0,0.35)]">
+                  <span className="absolute left-3 top-3 z-10 rounded-full border border-[color:var(--border-soft)] bg-[rgba(251,247,240,0.92)] px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.2em] text-[color:var(--text-body)] shadow-[0_8px_18px_-12px_rgba(85,63,39,0.22)] transition duration-300 ease-out group-hover:border-[color:var(--accent)]/30 group-hover:bg-[var(--accent-soft)] group-hover:text-[color:var(--accent-strong)]">
                     Ages {ageRange}
                   </span>
                 ) : null}
-                <div className="ui-card ui-card-hover bg-[#f9f7f2] p-4">
+                <div className="ui-card ui-card-hover bg-[var(--bg-card)] p-4 transition duration-300 ease-out group-hover:border-[color:var(--accent)]/20">
                   <ProductPreview
                     product={product as HttpTypes.StoreProduct}
                     region={region}

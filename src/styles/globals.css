@@ -2,6 +2,29 @@
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
 
+:root {
+  --bg-canvas: #f8f4ec;
+  --bg-surface: #fffaf2;
+  --bg-panel: #f4eee2;
+  --bg-card: #fbf6ed;
+  --text-strong: #342d24;
+  --text-body: #655949;
+  --text-muted: #9c8d79;
+  --border-soft: rgba(90, 72, 49, 0.12);
+  --shadow-soft: 0 22px 48px -34px rgba(92, 72, 45, 0.18);
+  --accent: #4e8b57;
+  --accent-strong: #2f6d3d;
+  --accent-soft: #e8f1e4;
+  --accent-warm: #d96d4f;
+}
+
+html,
+body {
+  background: var(--bg-canvas);
+  color: var(--text-strong);
+  font-family: var(--font-sans), "Trebuchet MS", sans-serif;
+}
+
 @layer utilities {
   /* Chrome, Safari and Opera */
   .no-scrollbar::-webkit-scrollbar {
@@ -63,47 +86,76 @@
   }
 
   .ui-eyebrow {
-    @apply text-xs uppercase tracking-[0.3em] text-black/40;
+    color: var(--text-muted);
+    @apply text-xs uppercase tracking-[0.3em];
   }
 
   .ui-title {
-    @apply mt-2 text-3xl font-semibold text-black;
+    color: var(--text-strong);
+    @apply mt-2 text-3xl font-bold;
   }
 
   .ui-subtitle {
-    @apply mt-3 max-w-2xl text-sm text-black/60;
+    color: var(--text-body);
+    @apply mt-3 max-w-2xl text-sm;
   }
 
   .ui-card {
-    @apply rounded-3xl border border-black/5 bg-white/95 shadow-[0_18px_40px_-30px_rgba(0,0,0,0.22)];
+    border-color: var(--border-soft);
+    background: color-mix(in srgb, var(--bg-surface) 88%, white 12%);
+    box-shadow: var(--shadow-soft);
+    @apply rounded-3xl border;
   }
 
   .ui-card-hover {
-    @apply transition duration-200 ease-out hover:-translate-y-0.5 hover:shadow-[0_24px_55px_-32px_rgba(0,0,0,0.3)];
+    @apply transition duration-300 ease-out hover:-translate-y-1 hover:shadow-[0_26px_56px_-34px_rgba(92,72,45,0.24)];
   }
 
   .ui-link {
-    @apply transition-colors duration-200 ease-out hover:text-black;
+    color: inherit;
+    @apply transition-colors duration-200 ease-out hover:text-[color:var(--accent-strong)];
   }
 
   .ui-button {
-    @apply inline-flex items-center gap-2 rounded-full border border-black/10 bg-white px-4 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-black/70 transition duration-200 ease-out hover:-translate-y-0.5 hover:border-black/20 hover:text-black;
+    border-color: var(--border-soft);
+    background: color-mix(in srgb, var(--bg-surface) 92%, white 8%);
+    color: var(--text-body);
+    @apply inline-flex items-center gap-2 rounded-full border px-4 py-2 text-xs font-bold uppercase tracking-[0.2em] transition duration-300 ease-out hover:-translate-y-0.5 hover:border-[color:var(--accent)] hover:bg-[color:var(--accent-soft)] hover:text-[color:var(--accent-strong)];
   }
 
   .ui-button-primary {
-    @apply bg-black text-white border-black hover:bg-black/90 hover:text-white;
+    background: #2f2a24;
+    border-color: #2f2a24;
+    color: #fffaf2;
+    @apply hover:text-white;
   }
 
   .ui-input {
-    @apply rounded-full border border-black/10 bg-white px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-black/10;
+    border-color: var(--border-soft);
+    background: color-mix(in srgb, var(--bg-surface) 92%, white 8%);
+    color: var(--text-strong);
+    @apply rounded-full border px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-black/10;
   }
 
   .ui-focus {
-    @apply focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#1f5eff];
+    @apply focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[color:var(--accent)];
   }
 
   .ui-fade-in {
     @apply transition duration-200 ease-out;
+  }
+
+  .ui-dropdown-surface {
+    background:
+      linear-gradient(180deg, rgba(255, 250, 242, 0.98) 0%, rgba(248, 244, 236, 0.98) 100%);
+    border: 1px solid var(--border-soft);
+    box-shadow: 0 26px 54px -34px rgba(92, 72, 45, 0.26);
+    backdrop-filter: blur(12px);
+  }
+
+  .ui-dropdown-enter {
+    animation: dropdown-enter 220ms cubic-bezier(0.2, 0.8, 0.2, 1);
+    transform-origin: top center;
   }
 
   @media (prefers-reduced-motion: reduce) {
@@ -174,5 +226,17 @@
 
   .text-3xl-semi {
     @apply text-[32px] leading-[44px] font-semibold;
+  }
+}
+
+@keyframes dropdown-enter {
+  0% {
+    opacity: 0;
+    transform: translateY(-10px) scale(0.985);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
   }
 }

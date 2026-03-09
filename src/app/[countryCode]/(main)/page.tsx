@@ -11,7 +11,7 @@ export default async function Home(props: {
   const params = await props.params
 
   return (
-    <div className="bg-[#f9f6f1]">
+    <div className="bg-[var(--bg-canvas)]">
       <div className="sticky top-0 z-50">
         <MainHeader />
         <PrimaryNav />

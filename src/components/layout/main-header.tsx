@@ -26,16 +26,16 @@ export default function MainHeader() {
   }
 
   return (
-    <div className="bg-white">
+    <div className="bg-[var(--bg-surface)]">
       <div className="content-container flex flex-col gap-4 py-5 md:flex-row md:items-center md:justify-between">
         <div className="flex items-center justify-between md:w-[220px]">
-          <div className="text-lg font-semibold tracking-[0.2em] text-black/80">
+          <div className="text-lg font-semibold tracking-[0.2em] text-[color:var(--text-strong)]">
             {BRAND_NAME}
           </div>
           <div className="flex items-center gap-2">
             <HomeLink />
             <button
-              className="rounded-full border border-black/10 px-3 py-1 text-xs uppercase tracking-[0.2em] text-black/60 md:hidden"
+              className="rounded-full border border-[color:var(--border-soft)] bg-[var(--bg-card)] px-3 py-1 text-xs uppercase tracking-[0.2em] text-[color:var(--text-body)] md:hidden"
               type="button"
             >
               Menu
@@ -45,10 +45,10 @@ export default function MainHeader() {
 
         <form
           onSubmit={onSubmit}
-          className="flex flex-1 items-center gap-2 rounded-full border border-black/10 bg-white px-4 py-2 shadow-[0_10px_30px_-22px_rgba(0,0,0,0.25)] transition duration-200 ease-out focus-within:border-black/20"
+          className="flex flex-1 items-center gap-2 rounded-full border border-[color:var(--border-soft)] bg-[rgba(255,250,242,0.88)] px-4 py-2 shadow-[0_10px_30px_-22px_rgba(85,63,39,0.14)] transition duration-300 ease-out focus-within:border-[color:var(--accent)] focus-within:shadow-[0_16px_34px_-24px_rgba(78,139,87,0.28)]"
         >
           <button
-            className="flex h-8 w-8 items-center justify-center rounded-full bg-black text-white transition duration-200 ease-out hover:bg-black/90"
+            className="flex h-8 w-8 items-center justify-center rounded-full bg-[color:var(--accent)] text-white transition duration-300 ease-out hover:bg-[color:var(--accent-strong)]"
             type="submit"
             aria-label="Search"
           >
@@ -64,7 +64,7 @@ export default function MainHeader() {
             </svg>
           </button>
           <input
-            className="w-full bg-transparent text-sm text-black/80 placeholder:text-black/40 focus:outline-none"
+            className="w-full bg-transparent text-sm text-[color:var(--text-strong)] placeholder:text-[color:var(--text-muted)] focus:outline-none"
             type="search"
             value={query}
             onChange={(event) => setQuery(event.target.value)}
@@ -72,7 +72,7 @@ export default function MainHeader() {
           />
         </form>
 
-        <div className="hidden items-center justify-end gap-6 text-xs text-black/60 md:flex">
+        <div className="hidden items-center justify-end gap-6 text-xs text-[color:var(--text-body)] md:flex">
           {HEADER_LINKS.map((item) => (
             <Link
               key={item.label}

@@ -44,7 +44,7 @@ export default function PrimaryNav() {
 
   return (
     <div
-      className="relative border-b border-black/5 bg-white shadow-[0_18px_40px_-35px_rgba(0,0,0,0.35)]"
+      className="relative border-b border-[color:var(--border-soft)] bg-[var(--bg-surface)] shadow-[0_18px_40px_-35px_rgba(85,63,39,0.12)]"
       onMouseLeave={scheduleClose}
       onMouseEnter={clearCloseTimer}
       onKeyDown={(event) => {
@@ -90,10 +90,10 @@ export default function PrimaryNav() {
                   }
                   className={`flex items-center gap-2 border-b-2 px-1 pb-1 font-semibold uppercase tracking-[0.18em] transition duration-200 ease-out ui-focus ${
                     isActive
-                      ? "border-[#1f5eff] text-black"
+                      ? "border-[color:var(--accent)] text-[color:var(--accent-strong)]"
                       : openItem === item.label
-                        ? "border-[#1f5eff] text-black"
-                        : "border-transparent hover:border-black/20"
+                        ? "border-[color:var(--accent)] text-[color:var(--accent-strong)]"
+                        : "border-transparent hover:border-[color:var(--accent)]/40 hover:text-[color:var(--accent-strong)]"
                   }`}
                 >
                   {item.label}
@@ -103,7 +103,7 @@ export default function PrimaryNav() {
           })}
         </ul>
 
-        <div className="hidden text-xs uppercase tracking-[0.3em] text-black/40 md:block">
+        <div className="hidden text-xs uppercase tracking-[0.3em] text-[color:var(--text-muted)] md:block">
           Explore
         </div>
       </div>
@@ -121,21 +121,21 @@ export default function PrimaryNav() {
       )}
 
       {mobileOpen ? (
-        <div id="primary-nav-mobile" className="border-t border-black/5 bg-white md:hidden">
+        <div id="primary-nav-mobile" className="border-t border-[color:var(--border-soft)] bg-[var(--bg-surface)] md:hidden">
           <div className="content-container flex flex-col gap-3 py-4 text-sm text-black/70">
             {MARKETING_NAV.map((item) => {
               const href = item.href ?? item.groups?.[0]?.links[0]?.href ?? "#"
 
               return (
-                <details key={item.label} className="rounded-2xl border border-black/10 px-4 py-3">
+                <details key={item.label} className="rounded-2xl border border-[color:var(--border-soft)] bg-[var(--bg-card)] px-4 py-3">
                   <summary className="cursor-pointer list-none font-semibold uppercase tracking-[0.18em]">
                     {item.label}
                   </summary>
                   {item.groups ? (
-                    <div className="mt-3 grid gap-4 text-xs text-black/60">
+                    <div className="mt-3 grid gap-4 text-xs text-[color:var(--text-body)]">
                       {item.groups.map((group) => (
                         <div key={group.title}>
-                          <p className="text-[10px] uppercase tracking-[0.2em] text-black/40">
+                          <p className="text-[10px] uppercase tracking-[0.2em] text-[color:var(--text-muted)]">
                             {group.title}
                           </p>
                           <div className="mt-2 grid grid-cols-2 gap-2">
@@ -143,7 +143,7 @@ export default function PrimaryNav() {
                               <Link
                                 key={link.label}
                                 href={link.href}
-                                className="rounded-xl bg-black/5 px-3 py-2 transition duration-200 ease-out hover:bg-black/10"
+                                className="rounded-xl bg-[var(--bg-surface)] px-3 py-2 transition duration-200 ease-out hover:bg-[var(--accent-soft)] hover:text-[color:var(--accent-strong)]"
                               >
                                 {link.label}
                               </Link>
@@ -155,7 +155,7 @@ export default function PrimaryNav() {
                   ) : (
                     <Link
                       href={href}
-                      className="mt-2 inline-flex text-xs font-semibold uppercase tracking-[0.18em] text-black/60 ui-link"
+                      className="mt-2 inline-flex text-xs font-semibold uppercase tracking-[0.18em] text-[color:var(--text-body)] ui-link"
                     >
                       Go to {item.label}
                     </Link>

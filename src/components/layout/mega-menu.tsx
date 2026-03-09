@@ -12,25 +12,25 @@ export default function MegaMenu({ item }: { item: MarketingNavItem }) {
   return (
     <div
       id={`mega-menu-${item.label.toLowerCase().replace(/\s+/g, "-")}`}
-      className="absolute left-0 right-0 top-full z-[60] bg-white shadow-[0_30px_60px_-35px_rgba(0,0,0,0.45)]"
+      className="ui-dropdown-surface ui-dropdown-enter absolute left-0 right-0 top-full z-[60] overflow-hidden rounded-b-[2rem]"
     >
-      <div className="border-t border-black/10">
+      <div className="border-t border-[color:var(--border-soft)]">
         <div className="content-container py-8">
           <div className="grid gap-8 lg:grid-cols-[220px_1fr]">
-            <div className="rounded-2xl border border-black/10 bg-white p-4">
-              <p className="text-xs uppercase tracking-[0.22em] text-black/40">
+            <div className="rounded-[1.5rem] border border-[color:var(--border-soft)] bg-[rgba(255,250,242,0.88)] p-5">
+              <p className="text-xs uppercase tracking-[0.22em] text-[color:var(--text-muted)]">
                 Browse {item.label}
               </p>
-              <p className="mt-4 text-sm text-black/60">
+              <p className="mt-4 text-sm text-[color:var(--text-body)]">
                 Curated shortcuts to help families shop faster.
               </p>
             </div>
 
-            <div className="rounded-2xl border border-black/10 bg-white p-6">
+            <div className="rounded-[1.5rem] border border-[color:var(--border-soft)] bg-[rgba(255,250,242,0.88)] p-6">
               <div className="grid gap-8 md:grid-cols-2">
                 {item.groups.map((group) => (
                   <div key={group.title}>
-                    <p className="text-xs uppercase tracking-[0.22em] text-black/40">
+                    <p className="text-xs uppercase tracking-[0.22em] text-[color:var(--text-muted)]">
                       {group.title}
                     </p>
                     <ul className="mt-4 grid gap-3">
@@ -38,12 +38,12 @@ export default function MegaMenu({ item }: { item: MarketingNavItem }) {
                         <li key={link.label}>
                           <Link
                             href={link.href}
-                            className="text-sm text-black/70 transition duration-200 ease-out hover:text-black ui-focus"
+                            className="inline-flex rounded-full px-3 py-2 text-sm text-[color:var(--text-body)] transition duration-200 ease-out hover:bg-[var(--accent-soft)] hover:text-[color:var(--accent-strong)] ui-focus"
                           >
                             {link.label}
                           </Link>
                           {link.description ? (
-                            <p className="mt-1 text-xs text-black/50">
+                            <p className="mt-1 px-3 text-xs text-[color:var(--text-muted)]">
                               {link.description}
                             </p>
                           ) : null}

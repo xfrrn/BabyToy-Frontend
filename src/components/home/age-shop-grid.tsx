@@ -41,7 +41,7 @@ const AGE_CARDS = [
 
 export default function AgeShopGrid() {
   return (
-    <section className="bg-white">
+    <section className="bg-[var(--bg-canvas)]">
       <div className="content-container py-16">
         <div className="mb-10 flex flex-wrap items-end justify-between gap-4">
           <div>
@@ -62,19 +62,20 @@ export default function AgeShopGrid() {
             <Link
               key={card.title}
               href={card.href}
-              className="group flex flex-col items-center text-center"
+              className="group relative flex flex-col items-center text-center"
             >
-              <div className="flex aspect-square w-full max-w-[260px] items-center justify-center rounded-full bg-[#f1f1f1] transition duration-200 ease-out group-hover:bg-[#e8e8e8]">
-                <div className="flex flex-col items-center leading-none text-black">
-                  <span className="text-4xl font-semibold tracking-[-0.04em] md:text-5xl">
+              <div className="pointer-events-none absolute top-6 h-24 w-24 rounded-full bg-[radial-gradient(circle,rgba(232,241,228,0.92)_0%,rgba(232,241,228,0)_72%)] opacity-0 blur-2xl transition duration-300 ease-out group-hover:opacity-100" />
+              <div className="flex aspect-square w-full max-w-[260px] items-center justify-center rounded-full border border-transparent bg-[var(--bg-panel)] shadow-[0_18px_36px_-30px_rgba(92,72,45,0.14)] transition duration-300 ease-out group-hover:-translate-y-1 group-hover:border-[color:var(--accent)]/18 group-hover:bg-[#ece2d4] group-hover:shadow-[0_24px_48px_-30px_rgba(92,72,45,0.22)]">
+                <div className="flex flex-col items-center leading-none text-black transition duration-300 ease-out group-hover:text-[color:var(--accent-strong)]">
+                  <span className="text-4xl font-semibold tracking-[-0.04em] transition duration-300 ease-out group-hover:scale-[1.04] md:text-5xl">
                     {card.value}
                   </span>
-                  <span className="mt-3 text-2xl font-semibold md:text-3xl">
+                  <span className="mt-3 text-2xl font-semibold transition duration-300 ease-out group-hover:scale-[1.04] md:text-3xl">
                     {card.unit}
                   </span>
                 </div>
               </div>
-              <p className="mt-5 text-lg font-medium text-black underline-offset-4 transition duration-200 ease-out group-hover:underline">
+              <p className="mt-5 text-lg font-medium text-black underline-offset-4 transition duration-300 ease-out group-hover:-translate-y-0.5 group-hover:text-[color:var(--accent-strong)] group-hover:underline">
                 {card.title}
               </p>
             </Link>

@@ -31,18 +31,19 @@ export default async function ProductPreview({
   return (
     <LocalizedClientLink
       href={`/products/${product.handle}`}
-      className="group ui-link ui-focus"
+      className="group block ui-link ui-focus"
     >
-      <div data-testid="product-wrapper">
+      <div data-testid="product-wrapper" className="relative">
+        <div className="pointer-events-none absolute inset-x-6 top-6 h-24 rounded-full bg-[radial-gradient(circle,rgba(232,241,228,0.95)_0%,rgba(232,241,228,0)_72%)] opacity-0 blur-xl transition duration-300 ease-out group-hover:opacity-100" />
         <Thumbnail
           thumbnail={product.thumbnail}
           images={product.images}
           size="full"
           isFeatured={isFeatured}
         />
-        <div className="flex txt-compact-medium mt-4 justify-between">
+        <div className="mt-4 flex items-start justify-between gap-3 txt-compact-medium">
           <Text
-            className="text-ui-fg-subtle transition-colors duration-200 ease-out group-hover:text-ui-fg-base"
+            className="text-ui-fg-subtle text-[15px] font-semibold leading-6 transition duration-300 ease-out group-hover:-translate-y-0.5 group-hover:text-[color:var(--accent-strong)]"
             data-testid="product-title"
           >
             {product.title}
